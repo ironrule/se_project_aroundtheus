@@ -1,3 +1,7 @@
 .footer__copyright {
   color: #545454;
+  display: flex;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 60px 0;
 }

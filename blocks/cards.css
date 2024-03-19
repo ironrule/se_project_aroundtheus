@@ -1,0 +1,45 @@
+.cards {
+  padding: 0;
+  row-gap: 20px;
+  column-gap: 17px;
+  max-width: 880px;
+  color: #000000;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto;
+  margin: 0 auto;
+}
+
+.card {
+  width: 282px;
+  min-height: 361px;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.card__image {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card__title {
+  color: #151515;
+  margin: 25px 0 25px 20px;
+}
+
+.card__heart {
+  margin: 0 30px 0 auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.card__heart:hover {
+  opacity: 75%;
+}
+
+.card__text {
+  display: flex;
+  align-content: center;
+}

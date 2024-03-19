@@ -4,18 +4,104 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./pages/index.css" />
+    <link rel="stylesheet" href="./vendor/fonts.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <meta name="author" content="Brandon King" />
     <title>Around the U.S.</title>
   </head>
   <body class="page">
     <header class="header">
-      <h1 class="header__title">
-        Around <sup class="header__superscript">the U.S.</sup>
-      </h1>
+      <img
+        class="header__logo"
+        src="./images/header.svg"
+        alt="Around the U.S. logo"
+      />
     </header>
-    <section class="profile"></section>
-    <section class="cards"></section>
+    <main class="content">
+      <section class="profile">
+        <img class="profile__image" src="./images/jacques-cousteau.jpg" />
+        <h1 class="profile__title">Jacques Cousteau</h1>
+        <button class="profile__edit-button">
+          <img src="./images/pencil.svg" />
+        </button>
+        <button class="profile__add-button">
+          <img
+            class="profile__add-button_image"
+            src="./images/plus.svg"
+            alt="Add more to profile"
+          />
+        </button>
+        <p class="profile__description">Explorer</p>
+      </section>
+      <ul class="cards">
+        <li class="card">
+          <img class="card__image" src="./images/yosemite.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Yosemite Valley</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="./images/lake-louise.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Lake Louise</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="./images/bald-mountains.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Bald Mountains</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="./images/latemar.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Latemar</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="./images/vanoise.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Vanoise Nationa</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+        <li class="card">
+          <img class="card__image" src="./images/lago.jpg" />
+          <div class="card__text">
+            <h2 class="card__title">Lago di Braies</h2>
+            <img
+              src="./images/heart.svg"
+              class="card__heart"
+              alt="Heart icon for favorite images"
+            />
+          </div>
+        </li>
+      </ul>
+    </main>
     <footer class="footer">
       <p class="footer__copyright">© 2024 Around the U.S.</p>
     </footer>
