@@ -1,6 +1,6 @@
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 320px) {
   .header {
-    margin: 28px 0;
+    margin: 28px 0 0;
     padding-bottom: 32px;
   }
   .profile__image {
@@ -15,7 +15,7 @@
   .profile__title {
     font-size: 22px;
     line-height: 1.2;
-    margin: auto;
+    margin: 0 auto;
   }
   .profile__description {
     font-size: 14px;
@@ -23,46 +23,73 @@
     margin: auto;
   }
   .profile__add-button {
-    margin: auto;
-    border: 2px solid #fff;
-    background-color: #000000;
+    margin: 0 auto 0;
     width: 282px;
     height: 50px;
-    transition: opacity 0.2s ease-in-out;
   }
-  .cards {
+  .card__container {
     max-width: 282px;
   }
 }
 
-@media screen and (max-width: 768px) and (min-width: 450px) {
+@media screen and (min-width: 321px) and (max-width: 581px) {
+  .header {
+    margin: 28px 0 0;
+    padding-bottom: 32px;
+  }
   .profile__image {
     margin: 0 auto;
   }
   .profile__info {
     gap: 14px;
+    padding: 30px 0 36px 0;
     grid-template-columns: minmax(auto, auto) auto;
     margin: 0 auto;
   }
   .profile__title {
     font-size: 32px;
     line-height: 1.2;
-    margin: auto;
+    margin: 0 auto;
+  }
+  .profile__description {
+    font-size: 18px;
+    line-height: 1.2;
+    margin: 0 auto;
+  }
+  .profile__add-button {
+    margin: 0 auto 0;
+    width: 282px;
+    height: 50px;
+  }
+  .card__container {
+    max-width: 282px;
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 880px) {
+  .profile__image {
+    margin: 0 auto;
+  }
+  .profile__info {
+    gap: 14px;
+    grid-template-columns: minmax(auto, auto);
+    margin: 0;
+  }
+  .profile__title {
+    font-size: 32px;
+    line-height: 1.2;
   }
   .profile__description {
     font-size: 20px;
     line-height: 1.2;
-    margin: auto;
   }
   .profile__add-button {
     margin: auto;
-    border: 2px solid #fff;
-    background-color: #000000;
-    width: 282px;
+    width: 150px;
     height: 50px;
-    transition: opacity 0.2s ease-in-out;
   }
-  .cards {
-    grid-template-columns: repeat(2, minmax(282px, 1fr));
+  .card__container {
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    max-width: 581px;
   }
 }

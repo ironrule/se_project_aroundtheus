@@ -9,104 +9,100 @@
     <title>Around the U.S.</title>
   </head>
   <body class="page">
-    <div class="page__content">
-      <header class="header page__section">
+    <header class="header">
+      <img
+        class="header__logo"
+        src="./images/header.svg"
+        alt="Around the U.S. logo"
+      />
+    </header>
+    <section class="profile">
+      <img
+        class="profile__image"
+        src="./images/jacques-cousteau.jpg"
+        alt="Photo of Jacques Cousteau"
+      />
+      <div class="profile__info">
+        <h1 class="profile__title">Jacques Cousteau</h1>
+        <button class="profile__edit-button"></button>
+        <p class="profile__description">Explorer</p>
+      </div>
+      <button class="profile__add-button">
         <img
-          class="header__logo"
-          src="./images/header.svg"
-          alt="Around the U.S. logo"
+          class="profile__add-button_image"
+          src="./images/plus.svg"
+          alt="Add more to profile"
         />
-      </header>
-      <main class="content">
-        <section class="profile">
+      </button>
+    </section>
+    <ul class="card__container">
+      <li class="card">
+        <img class="card__image" src="./images/yosemite.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Yosemite Valley</h2>
           <img
-            class="profile__image"
-            src="./images/jacques-cousteau.jpg"
-            alt="Photo of Jacques Cousteau"
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
           />
-          <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
-            <button class="profile__edit-button"></button>
-            <p class="profile__description">Explorer</p>
-          </div>
-          <button class="profile__add-button">
-            <img
-              class="profile__add-button_image"
-              src="./images/plus.svg"
-              alt="Add more to profile"
-            />
-          </button>
-        </section>
-        <ul class="cards">
-          <li class="card">
-            <img class="card__image" src="./images/yosemite.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Yosemite Valley</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/lake-louise.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Lake Louise</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/bald-mountains.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Bald Mountains</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/latemar.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Latemar</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/vanoise.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Vanoise National Park</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/lago.jpg" />
-            <div class="card__text">
-              <h2 class="card__title">Lago di Braies</h2>
-              <img
-                src="./images/heart.svg"
-                class="card__heart"
-                alt="Heart icon for favorite images"
-              />
-            </div>
-          </li>
-        </ul>
-      </main>
-    </div>
+        </div>
+      </li>
+      <li class="card">
+        <img class="card__image" src="./images/lake-louise.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Lake Louise</h2>
+          <img
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
+          />
+        </div>
+      </li>
+      <li class="card">
+        <img class="card__image" src="./images/bald-mountains.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Bald Mountains</h2>
+          <img
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
+          />
+        </div>
+      </li>
+      <li class="card">
+        <img class="card__image" src="./images/latemar.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Latemar</h2>
+          <img
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
+          />
+        </div>
+      </li>
+      <li class="card">
+        <img class="card__image" src="./images/vanoise.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Vanoise National Park</h2>
+          <img
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
+          />
+        </div>
+      </li>
+      <li class="card">
+        <img class="card__image" src="./images/lago.jpg" />
+        <div class="card__text">
+          <h2 class="card__title">Lago di Braies</h2>
+          <img
+            src="./images/heart.svg"
+            class="card__heart"
+            alt="Heart icon for favorite images"
+          />
+        </div>
+      </li>
+    </ul>
     <footer class="footer">
       <p class="footer__copyright">© 2024 Around the U.S.</p>
     </footer>

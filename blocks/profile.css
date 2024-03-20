@@ -1,16 +1,3 @@
-/* .profile {
-  display: grid;
-  grid-template-columns: 120px max-content 24px auto;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas:
-    "avatar name edit add-button"
-    "avatar description . add-button";
-  margin: 40px auto 51px;
-  max-width: 880px;
-  max-height: 120px;
-  align-items: center;
-} */
-
 .profile {
   display: flex;
   flex-wrap: wrap;
