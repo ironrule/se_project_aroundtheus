@@ -2,6 +2,17 @@
   background-color: #000000;
   color: #ffffff;
   font-family: "Inter", Arial, sans-serif;
-  max-width: 1440px;
+}
+
+.page__section {
+  width: 100%;
+  max-width: 880px;
+  position: relative;
   margin: 0 auto;
+}
+
+.page__content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

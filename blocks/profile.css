@@ -1,4 +1,4 @@
-.profile {
+/* .profile {
   display: grid;
   grid-template-columns: 120px max-content 24px auto;
   grid-template-rows: 1fr 1fr;
@@ -9,63 +9,87 @@
   max-width: 880px;
   max-height: 120px;
   align-items: center;
+} */
+
+.profile {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 40px 0;
+  max-width: 880px;
+  margin: 0 auto;
 }
 
 .profile__image {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  grid-area: avatar;
+  margin-right: 30px;
+}
+
+.profile__info {
+  display: grid;
+  gap: 14px;
+  grid-template-areas:
+    "title button"
+    "description description";
+  grid-template-columns: minmax(auto, auto) auto;
 }
 
 .profile__title {
   font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
-  margin: 0 0 0 30px;
-  grid-area: name;
-  align-self: end;
+  font-weight: 500;
+  line-height: 1.2;
+  margin: 0;
+  grid-area: title;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile__description {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
+  grid-area: description;
+  align-self: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile__edit-button {
-  background-color: #000000;
-  margin: 18px 0 0 18px;
+  background: transparent url(../images/pencil.svg) center no-repeat;
+  margin: 0;
   border: none;
-  max-width: 24px;
-  max-height: 24px;
+  width: 24px;
+  height: 24px;
   padding: 0;
   transition: opacity 0.2s ease-in-out;
-  grid-area: edit;
+  grid-area: button;
 }
 
 .profile__edit-button:hover {
-  opacity: 75%;
+  opacity: 60%;
 }
 
 .profile__add-button {
-  margin: 0 0 0 auto;
+  margin-left: auto;
   border: 2px solid #fff;
   background-color: #000000;
-  max-width: 150px;
-  max-height: 50px;
+  width: 150px;
+  height: 50px;
   padding: 12px 62px;
   transition: opacity 0.2s ease-in-out;
-  grid-area: add-button;
-  /* align-self: center; */
 }
 
 .profile__add-button:hover {
-  opacity: 75%;
+  opacity: 60%;
 }
 
 .profile__add-button_image {
   height: 22px;
   width: 22px;
-}
-
-.profile__description {
-  max-width: 415px;
-  margin: 7px 0 0 30px;
-  padding: 0;
-  grid-area: description;
-  align-self: start;
 }
