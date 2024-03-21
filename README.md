@@ -3,8 +3,10 @@
 ### Overview
 
 - Intro
+- Video
 - Figma
 - Images
+- Future Plans
 
 **Intro**
 
@@ -15,6 +17,12 @@ The site is currently hosted on GitHub Pages at the following address:
 [Link to the project site on GitHub Pages](https://ironrule.github.io/se_project_aroundtheus/)
 
 You can review the site in DevTools and inspect each element, as well as change page sizes to see how it will look on different devices. As we were given 2 designs in Figma, some of the different sizes had to be styled based on what looked or worked best.
+
+**Video**
+
+Below is a link to the video that I created for my site, to show the different features used in the development of this project.
+
+[Link to the video displaying site features and methodology](https://www.youtube.com)
 
 **Figma**
 
@@ -31,3 +39,7 @@ Below are links to the images of my site while viewing in DevTools to see the di
 [Link to the Tablet Screenshot](./readme/tablet.png)
 
 [Link to the Mobile Screenshot](./readme/mobile.png)
+
+**Future Plans**
+
+Future plans for this site include making interactive buttons, edit features, and allowing users to add more images. This will be accomplished with Javascript, additional CSS and HTML.
