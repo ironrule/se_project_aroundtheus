@@ -22,7 +22,7 @@ You can review the site in DevTools and inspect each element, as well as change 
 
 Below is a link to the video that I created for my site, to show the different features used in the development of this project.
 
-[Link to the video displaying site features and methodology](https://www.youtube.com)
+Pending: To be completed on 3/25/2024...
 
 **Figma**
 
