@@ -45,3 +45,22 @@
   display: flex;
   align-content: center;
 }
+
+@media screen and (max-width: 320px) {
+  .card__container {
+    max-width: 282px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 581px) {
+  .card__container {
+    max-width: 282px;
+  }
+}
+
+@media screen and (min-width: 581px) and (max-width: 880px) {
+  .card__container {
+    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+    max-width: 581px;
+  }
+}

@@ -12,3 +12,17 @@
   max-height: 33px;
   padding: 0 0 0 27px;
 }
+
+@media screen and (max-width: 320px) {
+  .header {
+    margin: 28px 0 0;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 321px) and (max-width: 581px) {
+  .header {
+    margin: 28px 0 0;
+    padding-bottom: 32px;
+  }
+}
