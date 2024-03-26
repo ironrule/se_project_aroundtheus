@@ -25,20 +25,29 @@
 }
 
 .card__title {
-  color: #151515;
+  color: #000000;
+  font-size: 24px;
+  line-height: 1.2;
   margin: 25px 0 25px 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.card__like-button {
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 20px 0 auto;
+}
+
 .card__heart {
-  margin: 0 30px 0 auto;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.2s ease-in-out;
 }
 
 .card__heart:hover {
-  opacity: 60%;
+  opacity: 50%;
 }
 
 .card__text {
@@ -60,7 +69,6 @@
 
 @media screen and (min-width: 581px) and (max-width: 880px) {
   .card__container {
-    grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
     max-width: 581px;
   }
 }
