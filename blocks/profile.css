@@ -2,9 +2,10 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 40px 0;
+  padding: 40px 40px;
   max-width: 880px;
-  margin: 0 auto;
+  margin: 0 auto 0;
+  box-sizing: border-box;
 }
 
 .profile__image {
@@ -113,10 +114,11 @@
   }
 }
 
-@media screen and (min-width: 0px) and (max-width: 880px) {
+@media screen and (min-width: 0px) and (max-width: 750px) {
   .profile {
     flex-direction: column;
     text-align: center;
+    padding: 40px 0;
   }
   .profile__info {
     padding: 30px 0 36px 0;

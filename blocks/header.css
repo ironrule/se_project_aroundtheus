@@ -8,8 +8,8 @@
 }
 
 .header__logo {
-  max-width: 173px;
-  max-height: 33px;
+  width: 173px;
+  height: 33px;
   padding: 0;
 }
 
@@ -20,7 +20,7 @@
   }
   .header__logo {
     max-width: 126px;
-    max-height: 34px;
+    max-height: 24px;
     padding-left: 27px;
   }
 }
