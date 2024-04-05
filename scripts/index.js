@@ -26,19 +26,12 @@ let initialCards = [
 ];
 
 const profile = document.querySelector(".profile__edit-button");
+const modalClosed = document.querySelector(".modal__close");
 
 function editProfile() {
   let modal = document.querySelector(".modal");
-  modal.classList.add("modal_opened");
+  modal.classList.toggle("modal_opened");
 }
 
 profile.addEventListener("click", editProfile);
-
-const modalClose = document.querySelector(".modal__close");
-
-function closeProfile() {
-  let modalExit = document.querySelector(".modal");
-  modalExit.classList.remove("modal_opened");
-}
-
-modalClose.addEventListener("click", closeProfile);
+modalClosed.addEventListener("click", editProfile);
