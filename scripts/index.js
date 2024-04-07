@@ -1,3 +1,4 @@
+// Card Array
 let initialCards = [
   {
     locationName: "Yosemite Valley",
@@ -25,6 +26,7 @@ let initialCards = [
   },
 ];
 
+// Selector variables
 let profile = document.querySelector(".profile__edit-button");
 let modalClosed = document.querySelector(".modal__close");
 let modalSaved = document.querySelector(".modal__button");
@@ -36,8 +38,9 @@ let modal = document.querySelector(".modal");
 let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 let cardElement = cardTemplate.cloneNode(true);
-let cardContainer = document.querySelector("#card__container");
+let cardContainer = document.querySelector(".card__container");
 
+// Functions
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
@@ -51,6 +54,7 @@ function editProfile() {
   modal.classList.toggle("modal_opened");
 }
 
+// Dynamic iterative card creation loop
 for (let initialCard of initialCards) {
   getCardElement(initialCard);
   cardContainer.append(cardElement.cloneNode(true));
@@ -64,6 +68,7 @@ for (let initialCard of initialCards) {
   }
 }
 
+// Event Listeners
 profile.addEventListener("click", editProfile);
 modalClosed.addEventListener("click", editProfile);
 modal.addEventListener("submit", handleFormSubmit);
