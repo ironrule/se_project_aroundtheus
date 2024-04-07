@@ -53,7 +53,7 @@ function editProfile() {
 
 for (let initialCard of initialCards) {
   getCardElement(initialCard);
-  cardContainer.appendChild(cardElement);
+  cardContainer.append(cardElement.cloneNode(true));
 
   function getCardElement(data) {
     cardElement.querySelector(".card__title").textContent =
