@@ -32,8 +32,8 @@ let modalClosed = document.querySelector(".modal__close");
 let modalSaved = document.querySelector(".modal__button");
 let profileName = document.querySelector(".profile__title");
 let profileDescription = document.querySelector(".profile__description");
-let inputName = document.querySelector(".modal__input_type_name");
-let inputDescription = document.querySelector(".modal__input_type_description");
+let inputName = document.querySelector(".modal__input-name");
+let inputDescription = document.querySelector(".modal__input-description");
 let modal = document.querySelector(".modal");
 let cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
