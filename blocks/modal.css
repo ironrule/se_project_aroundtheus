@@ -46,13 +46,12 @@
 }
 
 .modal__form {
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-.modal__input_type_name .modal__input_type_description {
+.modal__input {
   font-size: 14px;
   line-height: 24px;
   font-weight: 400;

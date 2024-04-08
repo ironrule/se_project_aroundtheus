@@ -1,5 +1,5 @@
 // Card Array
-let initialCards = [
+const initialCards = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -27,47 +27,52 @@ let initialCards = [
 ];
 
 // Selector variables
-let profile = document.querySelector(".profile__edit-button");
-let modalClosed = document.querySelector(".modal__close");
-let modalSaved = document.querySelector(".modal__button");
-let profileName = document.querySelector(".profile__title");
-let profileDescription = document.querySelector(".profile__description");
-let inputName = document.querySelector(".modal__input-name");
-let inputDescription = document.querySelector(".modal__input-description");
-let modal = document.querySelector(".modal");
-let cardTemplate =
+const openProfileButton = document.querySelector(".profile__edit-button");
+const closeProfileButton = document.querySelector(".modal__close");
+const profileName = document.querySelector(".profile__title");
+const profileDescription = document.querySelector(".profile__description");
+const inputName = document.querySelector("#modal__input-name");
+const inputDescription = document.querySelector("#modal__input-description");
+const modal = document.querySelector(".modal");
+const modalForm = document.querySelector(".modal__form");
+const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
-let cardElement = cardTemplate.cloneNode(true);
-let cardContainer = document.querySelector(".card__container");
-
-// Functions
-function handleFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputDescription.value;
-  modal.classList.toggle("modal_opened");
-}
-
-function editProfile() {
-  inputName.value = profileName.textContent;
-  inputDescription.value = profileDescription.textContent;
-  modal.classList.toggle("modal_opened");
-}
+const cardContainer = document.querySelector(".card__container");
 
 // Dynamic iterative card creation loop
 for (let initialCard of initialCards) {
   getCardElement(initialCard);
-  cardContainer.append(cardElement.cloneNode(true));
+}
 
-  function getCardElement(data) {
-    cardElement.querySelector(".card__title").textContent = initialCard.name;
-    cardElement.querySelector(".card__image").src = initialCard.link;
-    cardElement.querySelector(".card__image").alt = initialCard.name;
-    return cardElement;
-  }
+// Functions
+function openProfileModal() {
+  inputName.value = profileName.textContent;
+  inputDescription.value = profileDescription.textContent;
+  toggleProfileModal();
+}
+
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  profileName.textContent = inputName.value;
+  profileDescription.textContent = inputDescription.value;
+  toggleProfileModal();
+}
+
+function toggleProfileModal() {
+  modal.classList.toggle("modal_opened");
+}
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardName = cardElement.querySelector(".card__title");
+  cardName.textContent = data.name;
+  cardImage.src = data.link;
+  cardImage.alt = data.name;
+  cardContainer.append(cardElement.cloneNode(true));
 }
 
 // Event Listeners
-profile.addEventListener("click", editProfile);
-modalClosed.addEventListener("click", editProfile);
-modal.addEventListener("submit", handleFormSubmit);
+openProfileButton.addEventListener("click", openProfileModal);
+closeProfileButton.addEventListener("click", toggleProfileModal);
+modalForm.addEventListener("submit", handleFormSubmit);
