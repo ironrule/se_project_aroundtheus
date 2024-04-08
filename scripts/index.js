@@ -35,8 +35,7 @@ const inputName = document.querySelector("#modal__input-name");
 const inputDescription = document.querySelector("#modal__input-description");
 const modal = document.querySelector(".modal");
 const modalForm = document.querySelector(".modal__form");
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".card__container");
 
 // Dynamic iterative card creation loop
@@ -45,6 +44,21 @@ for (let initialCard of initialCards) {
 }
 
 // Functions
+function getCardElement(data) {
+  const cardElement = createCard(data);
+  cardContainer.append(cardElement);
+}
+
+function createCard(item) {
+  const cardClone = cardTemplate.cloneNode(true);
+  const cardImage = cardClone.querySelector(".card__image");
+  const cardName = cardClone.querySelector(".card__title");
+  cardName.textContent = item.name;
+  cardImage.src = item.link;
+  cardImage.alt = item.name;
+  return cardClone;
+}
+
 function openProfileModal() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
@@ -60,16 +74,6 @@ function handleFormSubmit(evt) {
 
 function toggleProfileModal() {
   modal.classList.toggle("modal_opened");
-}
-
-function getCardElement(data) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardName = cardElement.querySelector(".card__title");
-  cardName.textContent = data.name;
-  cardImage.src = data.link;
-  cardImage.alt = data.name;
-  cardContainer.append(cardElement.cloneNode(true));
 }
 
 // Event Listeners
