@@ -39,9 +39,9 @@ const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".card__container");
 
 // Dynamic iterative card creation loop
-for (let initialCard of initialCards) {
-  getCardElement(initialCard);
-}
+initialCards.forEach((item) => {
+  getCardElement(item);
+});
 
 // Functions
 function getCardElement(data) {
@@ -80,3 +80,13 @@ function toggleProfileModal() {
 openProfileButton.addEventListener("click", openProfileModal);
 closeProfileButton.addEventListener("click", toggleProfileModal);
 modalForm.addEventListener("submit", handleFormSubmit);
+
+// Adding code for adding new cards
+// openAddButton.addEventListener("click", openAddModal);
+// closeAddButton.addEventListener("click", toggleAddModal);
+// modalAddForm.addEventListener("submit", handleAddSubmit);
+
+// Add new Cards variables
+// const openProfileButton = document.querySelector(".profile__edit-button");
+// const closeProfileButton = document.querySelector(".modal__close");
+// const modalForm = document.querySelector(".modal__form");
