@@ -37,6 +37,12 @@ const modal = document.querySelector(".modal");
 const modalForm = document.querySelector(".modal__form");
 const cardTemplate = document.querySelector("#card-template").content;
 const cardContainer = document.querySelector(".card__container");
+const openCardButton = document.querySelector(".profile__add-button");
+const closeCardButton = document.querySelector(".modal__add-close");
+const modalCardForm = document.querySelector(".modal__card-form");
+const cardPlaceName = document.querySelector("#modal__input-place");
+const cardPlaceURL = document.querySelector("#modal__input-url");
+const modalCard = document.querySelector(".modal__card-form");
 
 // Dynamic iterative card creation loop
 initialCards.forEach((item) => {
@@ -59,6 +65,14 @@ function createCard(item) {
   return cardClone;
 }
 
+function handleCardSubmit(evt) {
+  evt.preventDefault();
+  const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
+  const cardElement = createCard(cardPlace);
+  cardContainer.prepend(cardElement);
+  toggleCardModal();
+}
+
 function openProfileModal() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
@@ -76,17 +90,31 @@ function toggleProfileModal() {
   modal.classList.toggle("modal_opened");
 }
 
+function toggleCardModal() {
+  modalCard.classList.toggle("modal_opened");
+}
+
 // Event Listeners
 openProfileButton.addEventListener("click", openProfileModal);
 closeProfileButton.addEventListener("click", toggleProfileModal);
 modalForm.addEventListener("submit", handleFormSubmit);
+openCardButton.addEventListener("click", toggleCardModal);
+closeCardButton.addEventListener("click", toggleCardModal);
+modalCardForm.addEventListener("submit", handleCardSubmit);
 
-// Adding code for adding new cards
-// openAddButton.addEventListener("click", openAddModal);
-// closeAddButton.addEventListener("click", toggleAddModal);
-// modalAddForm.addEventListener("submit", handleAddSubmit);
+// Like Button coding
+const likeButtons = document.querySelectorAll(".card__heart");
+console.log(likeButtons);
 
-// Add new Cards variables
-// const openProfileButton = document.querySelector(".profile__edit-button");
-// const closeProfileButton = document.querySelector(".modal__close");
-// const modalForm = document.querySelector(".modal__form");
+// likeButton.addEventListener("click", toggleLikeButton);
+
+likeButtons.forEach((likeButton) => {
+  likeButton.addEventListener("click", () => {
+    console.log("click");
+  });
+});
+
+function toggleLikeButton() {
+  console.log("test");
+  likeButton.classList.toggle("card__heart-fill");
+}

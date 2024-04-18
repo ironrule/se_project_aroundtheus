@@ -3,7 +3,6 @@
   max-width: 880px;
   color: #000000;
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(282px, 1fr)); */
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
   box-sizing: border-box;
@@ -17,6 +16,7 @@
   border-radius: 10px;
   max-width: 282px;
   margin: 0 auto;
+  position: relative;
 }
 
 .card__image {
@@ -25,6 +25,26 @@
   object-fit: cover;
   height: 282px;
   border-radius: 10px 10px 0 0;
+}
+
+.card__trash-button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 19px;
+  padding: 0;
+  background-image: url("../images/trash.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.card__trash-button:hover {
+  opacity: 50%;
 }
 
 .card__title {
@@ -38,19 +58,26 @@
 }
 
 .card__like-button {
-  background-color: #ffffff;
+  width: 21px;
+  height: 19px;
+  background: transparent url("../images/heart.svg") center no-repeat;
+  background-size: 21px 18px;
   border: none;
-  cursor: pointer;
   padding: 0;
-  margin: 0 20px 0 auto;
-}
-
-.card__heart {
+  margin: 0;
   transition: opacity 0.2s ease-in-out;
 }
 
+.card__heart {
+}
+
+.card__heart-fill {
+  background-image: url("../images/heartactive.svg");
+}
+
 .card__heart:hover {
-  opacity: 50%;
+  opacity: 0.5;
+  cursor: pointer;
 }
 
 .card__text {

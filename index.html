@@ -52,6 +52,11 @@
           <div class="card__wrapper">
             <li class="card__content">
               <img class="card__image" />
+              <button
+                class="card__trash-button"
+                type="button"
+                aria-label="Trash Button"
+              ></button>
               <div class="card__text">
                 <h2 class="card__title"></h2>
                 <button
@@ -59,11 +64,11 @@
                   type="button"
                   aria-label="Favorite Button"
                 >
-                  <img
+                  <!-- <img
                     src="./images/heart.svg"
                     class="card__heart"
                     alt="Heart icon for favorite images"
-                  />
+                  /> -->
                 </button>
               </div>
             </li>
@@ -99,10 +104,10 @@
         </form>
       </div>
     </div>
-    <!-- Popup Modal with ability to add new cards 
-    <div class="modal">
+    <!-- Popup Modal with ability to add new cards -->
+    <div class="modal__card-form">
       <div class="modal__container">
-        <button class="modal__close"></button>
+        <button class="modal__add-close"></button>
         <p class="modal__heading">New place</p>
         <form class="modal__form">
           <input
@@ -110,6 +115,7 @@
             id="modal__input-place"
             type="text"
             name="title"
+            placeholder="Title"
             value=""
           />
           <input
@@ -117,12 +123,13 @@
             id="modal__input-url"
             type="text"
             name="url"
+            placeholder="Image link"
             value=""
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button">Create</button>
         </form>
       </div>
-    </div> -->
+    </div>
     <!-- Call to the Javascript file to add functionality to site -->
     <script src="./scripts/index.js"></script>
   </body>
