@@ -56,8 +56,8 @@ function createCardElement(item) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImage = cardElement.querySelector(".card__image");
   const cardName = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
   const trashButton = cardElement.querySelector(".card__trash-button");
+  const likeButton = cardElement.querySelector(".card__like-button");
   trashButton.addEventListener("click", () => {
     cardElement.remove();
   });
@@ -66,7 +66,6 @@ function createCardElement(item) {
   });
   cardImage.addEventListener("click", () => {
     previewImageModal.classList.add("modal__preview-image_active");
-    previewImageModal.style.content = "uri(" + cardImage.src + ")";
   });
   cardName.textContent = item.name;
   cardImage.src = item.link;

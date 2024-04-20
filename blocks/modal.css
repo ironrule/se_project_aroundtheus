@@ -8,6 +8,12 @@
   z-index: 999;
   display: none;
   padding: 0 19px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.modal:hover {
+  opacity: 1;
 }
 
 .modal__card-form {
@@ -20,6 +26,12 @@
   z-index: 999;
   display: none;
   padding: 0 19px;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.modal__card-form:hover {
+  opacity: 1;
 }
 
 .modal__add-close {
