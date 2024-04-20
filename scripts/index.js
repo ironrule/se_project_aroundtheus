@@ -43,40 +43,41 @@ const modalCardForm = document.querySelector(".modal__card-form");
 const cardPlaceName = document.querySelector("#modal__input-place");
 const cardPlaceURL = document.querySelector("#modal__input-url");
 const modalCard = document.querySelector(".modal__card-form");
+const previewImageModal = document.querySelector(".modal__preview-wrapper");
 
 // Dynamic iterative card creation loop
 initialCards.forEach((item) => {
-  getCardElement(item);
+  const createCard = createCardElement(item);
+  cardContainer.append(createCard);
 });
 
 // Functions
-function getCardElement(data) {
-  const cardElement = createCard(data);
-  cardContainer.append(cardElement);
-}
-
-function createCard(item) {
-  const cardClone = cardTemplate.cloneNode(true);
-  const cardImage = cardClone.querySelector(".card__image");
-  const cardName = cardClone.querySelector(".card__title");
-  const likeButton = cardClone.querySelector(".card__like-button");
-  const trashButton = cardClone.querySelector(".card__trash-button");
+function createCardElement(item) {
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardImage = cardElement.querySelector(".card__image");
+  const cardName = cardElement.querySelector(".card__title");
+  const likeButton = cardElement.querySelector(".card__like-button");
+  const trashButton = cardElement.querySelector(".card__trash-button");
+  trashButton.addEventListener("click", () => {
+    cardElement.remove();
+  });
   likeButton.addEventListener("click", () => {
     likeButton.classList.toggle("card__like-button_active");
   });
-  trashButton.addEventListener("click", () => {
-    cardContainer.remove(cardElement);
+  cardImage.addEventListener("click", () => {
+    previewImageModal.classList.add("modal__preview-image_active");
+    previewImageModal.style.content = "uri(" + cardImage.src + ")";
   });
   cardName.textContent = item.name;
   cardImage.src = item.link;
   cardImage.alt = item.name;
-  return cardClone;
+  return cardElement;
 }
 
 function handleCardSubmit(evt) {
   evt.preventDefault();
   const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
-  const cardElement = createCard(cardPlace);
+  const cardElement = createCardElement(cardPlace);
   cardContainer.prepend(cardElement);
   cardPlaceName.value = "";
   cardPlaceURL.value = "";
