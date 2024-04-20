@@ -52,6 +52,7 @@
   font-size: 24px;
   line-height: 1.2;
   margin: 25px 0 25px 20px;
+  max-width: 221px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -64,25 +65,22 @@
   background-size: 21px 18px;
   border: none;
   padding: 0;
-  margin: 0;
+  margin: 0 20px 0 auto;
   transition: opacity 0.2s ease-in-out;
+  align-self: center;
 }
 
-.card__heart {
-}
-
-.card__heart-fill {
+.card__like-button_active {
   background-image: url("../images/heartactive.svg");
 }
 
-.card__heart:hover {
+.card__like-button:hover {
   opacity: 0.5;
   cursor: pointer;
 }
 
 .card__text {
   display: flex;
-  align-content: center;
 }
 
 @media screen and (min-width: 0px) and (max-width: 580px) {

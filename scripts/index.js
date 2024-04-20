@@ -59,6 +59,14 @@ function createCard(item) {
   const cardClone = cardTemplate.cloneNode(true);
   const cardImage = cardClone.querySelector(".card__image");
   const cardName = cardClone.querySelector(".card__title");
+  const likeButton = cardClone.querySelector(".card__like-button");
+  const trashButton = cardClone.querySelector(".card__trash-button");
+  likeButton.addEventListener("click", () => {
+    likeButton.classList.toggle("card__like-button_active");
+  });
+  trashButton.addEventListener("click", () => {
+    cardContainer.remove(cardElement);
+  });
   cardName.textContent = item.name;
   cardImage.src = item.link;
   cardImage.alt = item.name;
@@ -70,6 +78,8 @@ function handleCardSubmit(evt) {
   const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
   const cardElement = createCard(cardPlace);
   cardContainer.prepend(cardElement);
+  cardPlaceName.value = "";
+  cardPlaceURL.value = "";
   toggleCardModal();
 }
 
@@ -101,20 +111,3 @@ modalForm.addEventListener("submit", handleFormSubmit);
 openCardButton.addEventListener("click", toggleCardModal);
 closeCardButton.addEventListener("click", toggleCardModal);
 modalCardForm.addEventListener("submit", handleCardSubmit);
-
-// Like Button coding
-const likeButtons = document.querySelectorAll(".card__heart");
-console.log(likeButtons);
-
-// likeButton.addEventListener("click", toggleLikeButton);
-
-likeButtons.forEach((likeButton) => {
-  likeButton.addEventListener("click", () => {
-    console.log("click");
-  });
-});
-
-function toggleLikeButton() {
-  console.log("test");
-  likeButton.classList.toggle("card__heart-fill");
-}
