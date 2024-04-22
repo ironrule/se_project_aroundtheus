@@ -27,7 +27,7 @@
   border-radius: 10px 10px 0 0;
 }
 
-.card__trash-button {
+.card__delete-button {
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -43,8 +43,8 @@
   transition: opacity 0.2s ease-in-out;
 }
 
-.card__trash-button:hover {
-  opacity: 50%;
+.card__delete-button:hover {
+  opacity: 60%;
 }
 
 .card__title {
@@ -68,6 +68,7 @@
   margin: 0 20px 0 auto;
   transition: opacity 0.2s ease-in-out;
   align-self: center;
+  cursor: pointer;
 }
 
 .card__like-button_active {
@@ -76,7 +77,6 @@
 
 .card__like-button:hover {
   opacity: 0.5;
-  cursor: pointer;
 }
 
 .card__text {

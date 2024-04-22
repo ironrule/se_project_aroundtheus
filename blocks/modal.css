@@ -6,14 +6,11 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
   padding: 0 19px;
+  display: flex;
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.modal:hover {
-  opacity: 1;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal__card-form {
@@ -24,14 +21,11 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
+  display: flex;
   padding: 0 19px;
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease-in-out;
-}
-
-.modal__card-form:hover {
-  opacity: 1;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal__add-close {
@@ -47,10 +41,17 @@
   background-image: url("../images/close.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal__add-close:hover {
+  opacity: 0.6;
 }
 
 .modal_opened {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
 }
 
 .modal__preview-wrapper {
@@ -61,22 +62,39 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 0 19px;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal__preview-image {
+  margin: auto;
+  max-width: 75vw;
+  max-height: 75vh;
+  display: block;
+  z-index: 999;
 }
 
 .modal__preview-image_active {
-  display: flex;
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.modal__preview-caption {
+  padding: 12px 12px;
+  background-color: #000;
 }
 
 .modal__preview-close {
   border: none;
   background-color: transparent;
   cursor: pointer;
-  position: absolute;
+  position: relative;
   bottom: calc(100% + 5px);
   left: calc(100% + 5px);
   width: 32px;
@@ -85,6 +103,11 @@
   background-image: url("../images/close.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal__preview-close:hover {
+  opacity: 0.6;
 }
 
 .modal__container {
@@ -110,6 +133,11 @@
   background-image: url("../images/close.svg");
   background-repeat: no-repeat;
   background-size: contain;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal__close:hover {
+  opacity: 0.6;
 }
 
 .modal__heading {
@@ -143,6 +171,11 @@
   width: 358px;
   height: 50px;
   padding: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.modal__button:hover {
+  opacity: 80%;
 }
 
 @media screen and (max-width: 580px) {
@@ -179,5 +212,9 @@
     max-height: 46px;
     margin-top: 15px;
     font-size: 14px;
+  }
+  .modal__preview-close {
+    bottom: calc(100% + 32px);
+    left: calc(100% - 32px);
   }
 }

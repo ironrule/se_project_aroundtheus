@@ -53,7 +53,7 @@
             <li class="card__content">
               <img class="card__image" />
               <button
-                class="card__trash-button"
+                class="card__delete-button"
                 type="button"
                 aria-label="Trash Button"
               ></button>
@@ -126,8 +126,12 @@
     </div>
     <!-- Popup modal with image preview -->
     <div class="modal__preview-wrapper">
-      <div class="modal__preview-image">
-        <button class="modal__preview-close"></button>
+      <div class="modal__preview-content">
+        <div class="modal__preview-button-wrapper">
+          <button class="modal__preview-close"></button>
+        </div>
+        <img class="modal__preview-image" />
+        <figcaption class="modal__preview-caption"></figcaption>
       </div>
     </div>
     <!-- Call to the Javascript file to add functionality to site -->
