@@ -40,21 +40,21 @@ Below are links to the images of my site while viewing in DevTools to see the di
 
 [Desktop Screenshot](./readme/desktop.png)
 
-    [Desktop Profile Modal](./readme/desktopprofile.png)
+[Desktop Profile Modal](./readme/desktopprofile.png)
 
-    [Desktop New Place Added](./readme/desktopnewplace.png)
+[Desktop New Place Added](./readme/desktopnewplace.png)
 
-    [Desktop Like Button Function](./readme/desktopfavorite.png)
+[Desktop Like Button Function](./readme/desktopfavorite.png)
 
-    [Desktop Add Modal](./readme/desktopadd.png)
+[Desktop Add Modal](./readme/desktopadd.png)
 
-    [Desktop Delete Function](./readme/desktopdelete.png)
+[Desktop Delete Function](./readme/desktopdelete.png)
 
 [Tablet Screenshot](./readme/tablet.png)
 
 [Mobile Screenshot](./readme/mobile.png)
 
-    [Mobile Profile Modal](./readme/MobilePopup.png)
+[Mobile Profile Modal](./readme/MobilePopup.png)
 
 **Future Plans**
 
