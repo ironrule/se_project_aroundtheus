@@ -14,6 +14,8 @@ This project was a challenge to create the site from the Figma design and then m
 
 The second phase of this project involved making a window to edit the user's name and title. I created this with HTML and CSS, then added Javascript functionality to allow the window to operate properly, passing the name and title values to the modal and to the main page once edited. I then removed the HTML for my cards and generated them dynamically with Javascript, using querySelector, cloneNode, and writing functions for the array as an iterative loop.
 
+The third phase of this project included adding functionality to allow the user to add new cards, delete cards, click the like buttons, and implement some optimizations in Javascript to allow the site to function more efficiently.
+
 The site is currently hosted on GitHub Pages at the following address:
 
 [Link to the project site on GitHub Pages](https://ironrule.github.io/se_project_aroundtheus/)
@@ -28,7 +30,7 @@ Below is a link to the video that I created for my site, to show the different f
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/EO5AaNCuzzFL7X5gSY7HwQ/Sprint-4_-Around-The-U.S.-_-desktop-%2B-mobile?t=3hvVWRz9LUFsxyNn-6)
+- [Link to the project on Figma](<https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?t=3hvVWRz9LUFsxyNn-6>)
 
 After loading this design, I was able to export the necessary images for my project. This Figma design gave us a mockup of the site for small devices of 320 pixel width screens, and a regular desktop site of around 1280 pixels in width.
 
@@ -36,16 +38,24 @@ After loading this design, I was able to export the necessary images for my proj
 
 Below are links to the images of my site while viewing in DevTools to see the different sizes and how the site changes to adapt to them.
 
-[Link to the Desktop Screenshot](./readme/desktop.png)
+[Desktop Screenshot](./readme/desktop.png)
 
-    [Link to the Desktop Popup Modal](./readme/DesktopPopup.png)
+    [Desktop Profile Modal](./readme/desktopprofile.png)
 
-[Link to the Tablet Screenshot](./readme/tablet.png)
+    [Desktop New Place Added](./readme/desktopnewplace.png)
 
-[Link to the Mobile Screenshot](./readme/mobile.png)
+    [Desktop Like Button Function](./readme/desktopfavorite.png)
 
-    [Link to the Mobile Popup Modal](./readme/MobilePopup.png)
+    [Desktop Add Modal](./readme/desktopadd.png)
+
+    [Desktop Delete Function](./readme/desktopdelete.png)
+
+[Tablet Screenshot](./readme/tablet.png)
+
+[Mobile Screenshot](./readme/mobile.png)
+
+    [Mobile Profile Modal](./readme/MobilePopup.png)
 
 **Future Plans**
 
-Future plans for this site include continuing the interactive buttons, edit features, and allowing users to add more images. This will be accomplished with additional Javascript, CSS and HTML.
+Future plans for this site include coding the back-end to allow saving changes permanently, and editing features. This will be accomplished with additional Javascript, CSS and HTML.
