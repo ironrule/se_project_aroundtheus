@@ -6,8 +6,10 @@
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 999;
-  padding: 0 19px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 19px;
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
@@ -28,47 +30,10 @@
   transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
-.modal__add-close {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  position: absolute;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  background-image: url("../images/close.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.modal__add-close:hover {
-  opacity: 0.6;
-}
-
 .modal_opened {
   opacity: 1;
   visibility: visible;
   transition-delay: 0s;
-}
-
-.modal__preview-wrapper {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0 19px;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s linear 0.3s, opacity 0.3s linear;
 }
 
 .modal__preview-image {
@@ -90,24 +55,8 @@
   background-color: #000;
 }
 
-.modal__preview-close {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+#modal__preview-close {
   position: relative;
-  bottom: calc(100% + 5px);
-  left: calc(100% + 5px);
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  background-image: url("../images/close.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  transition: opacity 0.2s ease-in-out;
-}
-
-.modal__preview-close:hover {
-  opacity: 0.6;
 }
 
 .modal__container {

@@ -28,7 +28,7 @@ const initialCards = [
 
 // Profile and profile modal selector variables
 const openProfileButton = document.querySelector(".profile__edit-button");
-const closeProfileButton = document.querySelector(".modal__close");
+const closeProfileButton = document.querySelector("#modal__profile-close");
 const profileName = document.querySelector(".profile__title");
 const profileDescription = document.querySelector(".profile__description");
 const inputName = document.querySelector("#modal__input-name");
@@ -41,15 +41,15 @@ const cardTemplate =
 const cardContainer = document.querySelector(".card__container");
 // Add new card modal variables
 const openCardButton = document.querySelector(".profile__add-button");
-const closeCardButton = document.querySelector(".modal__add-close");
+const closeCardButton = document.querySelector("#modal__add-close");
 const modalCardForm = document.querySelector(".modal__card-form");
 const cardPlaceName = document.querySelector("#modal__input-place");
 const cardPlaceURL = document.querySelector("#modal__input-url");
 const modalCard = document.querySelector(".modal__card-form");
 // Image preview variables
-const previewImageModal = document.querySelector(".modal__preview-wrapper");
+const previewImageModal = document.querySelector("#modal__preview-wrapper");
 const previewImage = document.querySelector(".modal__preview-image");
-const previewImageClose = document.querySelector(".modal__preview-close");
+const previewImageClose = document.querySelector("#modal__preview-close");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
 
 // Card creation loop for initial card array

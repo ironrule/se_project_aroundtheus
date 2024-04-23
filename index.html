@@ -77,8 +77,12 @@
     <!-- Popup Modal with ability to edit user info -->
     <div class="modal">
       <div class="modal__container">
-        <button class="modal__close"></button>
-        <p class="modal__heading">Edit profile</p>
+        <button
+          class="modal__close"
+          id="modal__profile-close"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Edit profile</h2>
         <form class="modal__form">
           <input
             class="modal__input"
@@ -86,6 +90,8 @@
             type="text"
             name="title"
             value=""
+            placeholder="Name"
+            required
           />
           <input
             class="modal__input"
@@ -93,16 +99,22 @@
             type="text"
             name="description"
             value=""
+            placeholder="Title"
+            required
           />
-          <button class="modal__button">Save</button>
+          <button class="modal__button" type="submit">Save</button>
         </form>
       </div>
     </div>
     <!-- Popup Modal with ability to add new cards -->
     <div class="modal__card-form">
       <div class="modal__container">
-        <button class="modal__add-close"></button>
-        <p class="modal__heading">New place</p>
+        <button
+          class="modal__close"
+          id="modal__add-close"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">New place</h2>
         <form class="modal__form">
           <input
             class="modal__input"
@@ -111,30 +123,36 @@
             name="title"
             placeholder="Title"
             value=""
+            required
           />
           <input
             class="modal__input"
             id="modal__input-url"
-            type="text"
+            type="url"
             name="url"
             placeholder="Image link"
             value=""
+            required
           />
-          <button class="modal__button">Create</button>
+          <button class="modal__button" type="submit">Create</button>
         </form>
       </div>
     </div>
     <!-- Popup modal with image preview -->
-    <div class="modal__preview-wrapper">
+    <div class="modal" id="modal__preview-wrapper">
       <div class="modal__preview-content">
         <div class="modal__preview-button-wrapper">
-          <button class="modal__preview-close"></button>
+          <button
+            class="modal__close"
+            id="modal__preview-close"
+            type="button"
+          ></button>
         </div>
         <img class="modal__preview-image" />
         <figcaption class="modal__preview-caption"></figcaption>
       </div>
     </div>
     <!-- Call to the Javascript file to add functionality to site -->
-    <script src="./scripts/index.js"></script>
+    <script src="./scripts/index.js" defer></script>
   </body>
 </html>
