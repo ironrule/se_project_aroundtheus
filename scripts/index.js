@@ -47,7 +47,7 @@ const closeCardButton = document.querySelector("#modal__add-close");
 const modalCardForm = document.querySelector("#modal__card-form");
 const cardPlaceName = document.querySelector("#modal__input-place");
 const cardPlaceURL = document.querySelector("#modal__input-url");
-const modalCard = document.querySelector(".modal__card-form");
+const modalCard = document.querySelector("#modal__add-card");
 // Image preview variables
 const previewImageModal = document.querySelector("#modal__preview-wrapper");
 const previewImage = document.querySelector(".modal__preview-image");
@@ -77,7 +77,7 @@ function createCardElement(item) {
   cardImage.src = item.link;
   cardImage.alt = item.name;
   cardImage.addEventListener("click", () => {
-    togglePreviewImage();
+    openModal(previewImageModal);
     previewImage.src = cardImage.src;
     previewImage.alt = cardImage.alt;
     previewImageCaption.textContent = cardImage.alt;
@@ -108,14 +108,6 @@ function handleProfileFormSubmit(evt) {
   closeModal(profileModal);
 }
 
-// function toggleProfileModal() {
-//   profileModal.classList.toggle("modal_opened");
-// }
-
-function togglePreviewImage() {
-  previewImageModal.classList.toggle("modal__preview-image_active");
-}
-
 // Universal popup open and close
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -138,4 +130,6 @@ closeCardButton.addEventListener("click", function () {
   closeModal(modalCard);
 });
 modalCardForm.addEventListener("submit", handleCardSubmit);
-previewImageClose.addEventListener("click", togglePreviewImage);
+previewImageClose.addEventListener("click", function () {
+  closeModal(previewImageModal);
+});
