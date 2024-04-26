@@ -58,4 +58,4 @@ Below are links to the images of my site while viewing in DevTools to see the di
 
 **Future Plans**
 
-Future plans for this site include coding the back-end to allow saving changes permanently, and editing features. This will be accomplished with additional Javascript, CSS and HTML.
+Future plans for this site include coding the back-end to allow saving changes permanently, and editing features. This will be accomplished with additional Javascript, CSS and HTML. I will also be adding form validation and Javascript controls to limit what can be entered to the input fields.
