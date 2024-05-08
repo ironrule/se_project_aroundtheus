@@ -111,10 +111,25 @@ function handleProfileFormSubmit(evt) {
 // Universal popup open and close
 function openModal(modal) {
   modal.classList.add("modal_opened");
+  document.addEventListener(
+    "keydown",
+    (e) => {
+      if (e.key === "Escape") {
+        closeModal(modal);
+      }
+    },
+    { once: true }
+  );
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+}
+
+function modalEscape(e, modal) {
+  if (e.key === "Escape") {
+    closeModal(modal);
+  }
 }
 
 // Event Listeners
@@ -132,4 +147,13 @@ closeCardButton.addEventListener("click", function () {
 modalCardForm.addEventListener("submit", handleCardSubmit);
 previewImageClose.addEventListener("click", function () {
   closeModal(previewImageModal);
+});
+
+const modalMouse = document.querySelectorAll(".modal");
+modalMouse.forEach((modal) => {
+  modal.addEventListener("mousedown", (e) => {
+    if (e.target.classList.contains("modal_opened")) {
+      closeModal(modal);
+    }
+  });
 });

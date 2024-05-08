@@ -92,7 +92,10 @@
             value=""
             placeholder="Name"
             required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="modal__input-error" id="modal__input-name-error"></span>
           <input
             class="modal__input"
             id="modal__input-description"
@@ -101,8 +104,20 @@
             value=""
             placeholder="Title"
             required
+            minlength="2"
+            maxlength="200"
           />
-          <button class="modal__button" type="submit">Save</button>
+          <span
+            class="modal__input-error"
+            id="modal__input-description-error"
+          ></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
         </form>
       </div>
     </div>
@@ -124,7 +139,10 @@
             placeholder="Title"
             value=""
             required
+            minlength="1"
+            maxlength="30"
           />
+          <span class="modal__input-error" id="modal__input-place-error"></span>
           <input
             class="modal__input"
             id="modal__input-url"
@@ -134,7 +152,14 @@
             value=""
             required
           />
-          <button class="modal__button" type="submit">Create</button>
+          <span class="modal__input-error" id="modal__input-url-error"></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Create
+          </button>
         </form>
       </div>
     </div>
@@ -154,5 +179,6 @@
     </div>
     <!-- Call to the Javascript file to add functionality to site -->
     <script src="./scripts/index.js" defer></script>
+    <script src="./scripts/validate.js" defer></script>
   </body>
 </html>

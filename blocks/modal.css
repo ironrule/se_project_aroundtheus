@@ -95,7 +95,6 @@
   color: #fff;
   font-size: 18px;
   border-radius: 2px;
-  border: none;
   width: 358px;
   height: 50px;
   padding: 0;
@@ -104,6 +103,24 @@
 
 .modal__button:hover {
   opacity: 80%;
+}
+
+.modal__input-error {
+  color: red;
+  font-size: 12px;
+  opacity: 0;
+  max-width: 350px;
+}
+
+.modal__button_disabled {
+  background-color: #fff;
+  color: rgba(0, 0, 0, 0.2);
+  border-color: rgba(0, 0, 0, 0.2);
+  cursor: not-allowed;
+}
+
+.modal__error_visible {
+  opacity: 1;
 }
 
 @media screen and (max-width: 580px) {
