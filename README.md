@@ -6,6 +6,7 @@
 - Video
 - Figma
 - Images
+- Forms
 - Future Plans
 
 **Intro**
@@ -15,6 +16,8 @@ This project was a challenge to create the site from the Figma design and then m
 The second phase of this project involved making a window to edit the user's name and title. I created this with HTML and CSS, then added Javascript functionality to allow the window to operate properly, passing the name and title values to the modal and to the main page once edited. I then removed the HTML for my cards and generated them dynamically with Javascript, using querySelector, cloneNode, and writing functions for the array as an iterative loop.
 
 The third phase of this project included adding functionality to allow the user to add new cards, delete cards, click the like buttons, and implement some optimizations in Javascript to allow the site to function more efficiently.
+
+The fourth phase of this project included Javascript form validation for the edit profile modal. I also added new controls for closing the modals by using the mouse and clicking anywhere outside of the modal content, or by pressing the escape key.
 
 The site is currently hosted on GitHub Pages at the following address:
 
@@ -30,7 +33,7 @@ Below is a link to the video that I created for my site, to show the different f
 
 **Figma**
 
-- [Link to the project on Figma](<https://www.figma.com/file/JFPhASqvZ5pBjQV2ouUlim/Sprint-5_-Around-The-U.S.-_-desktop-%2B-mobile-(Copy)?t=3hvVWRz9LUFsxyNn-6>)
+- [Link to the project on Figma](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?node-id=0-1&t=88iVO80aevkZBggI-0)
 
 After loading this design, I was able to export the necessary images for my project. This Figma design gave us a mockup of the site for small devices of 320 pixel width screens, and a regular desktop site of around 1280 pixels in width.
 
@@ -56,6 +59,10 @@ Below are links to the images of my site while viewing in DevTools to see the di
 
 [Mobile Profile Modal](./readme/MobilePopup.png)
 
+**Forms**
+
+I have added form validation and Javascript controls to limit what can be entered to the input fields. These use the browser API to present the messages based on the set limits for each input field.
+
 **Future Plans**
 
-Future plans for this site include coding the back-end to allow saving changes permanently, and editing features. This will be accomplished with additional Javascript, CSS and HTML. I will also be adding form validation and Javascript controls to limit what can be entered to the input fields.
+Future plans for this site include coding the back-end to allow saving changes permanently. This will be accomplished with additional Javascript, CSS and HTML.
