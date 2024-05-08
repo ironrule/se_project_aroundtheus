@@ -124,33 +124,32 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-}
-
-function modalEscape(e, modal) {
-  if (e.key === "Escape") {
-    closeModal(modal);
-  }
+  document.removeEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeModal(modal);
+    }
+  });
 }
 
 // Event Listeners
-openProfileButton.addEventListener("click", openProfileModal);
-profileModalCloseButton.addEventListener("click", function () {
+openProfileButton.addEventListener("mousedown", openProfileModal);
+profileModalCloseButton.addEventListener("mousedown", function () {
   closeModal(profileModal);
 });
 profileModalForm.addEventListener("submit", handleProfileFormSubmit);
-openCardButton.addEventListener("click", function () {
+openCardButton.addEventListener("mousedown", function () {
   openModal(modalCard);
 });
-closeCardButton.addEventListener("click", function () {
+closeCardButton.addEventListener("mousedown", function () {
   closeModal(modalCard);
 });
 modalCardForm.addEventListener("submit", handleCardSubmit);
-previewImageClose.addEventListener("click", function () {
+previewImageClose.addEventListener("mousedown", function () {
   closeModal(previewImageModal);
 });
 
-const modalMouse = document.querySelectorAll(".modal");
-modalMouse.forEach((modal) => {
+const modals = document.querySelectorAll(".modal");
+modals.forEach((modal) => {
   modal.addEventListener("mousedown", (e) => {
     if (e.target.classList.contains("modal_opened")) {
       closeModal(modal);
