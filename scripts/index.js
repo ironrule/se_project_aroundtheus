@@ -123,7 +123,6 @@ function closeModal(modal) {
 
 const handleEscape = () => {
   if (event.key === "Escape") {
-    console.log(event.key);
     modals.forEach((modal) => {
       closeModal(modal);
     });
