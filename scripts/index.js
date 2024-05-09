@@ -121,17 +121,15 @@ function closeModal(modal) {
   document.removeEventListener("keydown", handleEscape);
 }
 
-const handleEscape = () => {
-  if (event.key === "Escape") {
-    modals.forEach((modal) => {
-      closeModal(modal);
-    });
+const handleEscape = (e) => {
+  if (e.key === "Escape") {
+    modals.forEach(closeModal);
   }
 };
 
 // Event Listeners
 openProfileButton.addEventListener("click", openProfileModal);
-profileModalCloseButton.addEventListener("mousedown", function () {
+profileModalCloseButton.addEventListener("click", function () {
   closeModal(profileModal);
 });
 profileModalForm.addEventListener("submit", handleProfileFormSubmit);
