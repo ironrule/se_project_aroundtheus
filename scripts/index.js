@@ -132,19 +132,19 @@ function closeModal(modal) {
 }
 
 // Event Listeners
-openProfileButton.addEventListener("mousedown", openProfileModal);
+openProfileButton.addEventListener("click", openProfileModal);
 profileModalCloseButton.addEventListener("mousedown", function () {
   closeModal(profileModal);
 });
 profileModalForm.addEventListener("submit", handleProfileFormSubmit);
-openCardButton.addEventListener("mousedown", function () {
+openCardButton.addEventListener("click", function () {
   openModal(modalCard);
 });
-closeCardButton.addEventListener("mousedown", function () {
+closeCardButton.addEventListener("click", function () {
   closeModal(modalCard);
 });
 modalCardForm.addEventListener("submit", handleCardSubmit);
-previewImageClose.addEventListener("mousedown", function () {
+previewImageClose.addEventListener("click", function () {
   closeModal(previewImageModal);
 });
 
