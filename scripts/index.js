@@ -53,6 +53,8 @@ const previewImageModal = document.querySelector("#modal__preview-wrapper");
 const previewImage = document.querySelector(".modal__preview-image");
 const previewImageClose = document.querySelector("#modal__preview-close");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
+// Modals Selector
+const modals = document.querySelectorAll(".modal");
 
 // Card creation loop for initial card array
 initialCards.forEach((item) => {
@@ -111,25 +113,22 @@ function handleProfileFormSubmit(evt) {
 // Universal popup open and close
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  document.addEventListener(
-    "keydown",
-    (e) => {
-      if (e.key === "Escape") {
-        closeModal(modal);
-      }
-    },
-    { once: true }
-  );
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      closeModal(modal);
-    }
-  });
+  document.removeEventListener("keydown", handleEscape);
 }
+
+const handleEscape = () => {
+  if (event.key === "Escape") {
+    console.log(event.key);
+    modals.forEach((modal) => {
+      closeModal(modal);
+    });
+  }
+};
 
 // Event Listeners
 openProfileButton.addEventListener("click", openProfileModal);
@@ -148,7 +147,6 @@ previewImageClose.addEventListener("click", function () {
   closeModal(previewImageModal);
 });
 
-const modals = document.querySelectorAll(".modal");
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (e) => {
     if (e.target.classList.contains("modal_opened")) {
