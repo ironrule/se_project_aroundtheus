@@ -23,6 +23,9 @@ function hasInvalidInput(inputList) {
   return !inputList.every((inputEl) => inputEl.validity.valid);
 }
 
+/**============================================
+ *               Button Controls
+ *=============================================**/
 function enableButton(submitButton, inactiveButtonClass) {
   submitButton.classList.remove(inactiveButtonClass);
   submitButton.disabled = false;
@@ -41,6 +44,9 @@ function toggleButtonState(inputEls, submitButton, { inactiveButtonClass }) {
   enableButton(submitButton, inactiveButtonClass);
 }
 
+/**============================================
+ *               Event Listeners
+ *=============================================**/
 function setEventListeners(formEl, options) {
   const { inputSelector } = options;
   const inputEls = [...formEl.querySelectorAll(inputSelector)];
@@ -64,6 +70,9 @@ function enableValidation(options) {
   });
 }
 
+/**============================================
+ *               Config Object
+ *=============================================**/
 const config = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",

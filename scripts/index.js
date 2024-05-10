@@ -1,4 +1,6 @@
-// Initial card array
+/**============================================
+ *               Initial Card Array
+ *=============================================**/
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -26,42 +28,45 @@ const initialCards = [
   },
 ];
 
+/**============================================
+ *               Variables
+ *=============================================**/
 // Profile and profile modal selector variables
 const openProfileButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector(".profile__title");
+const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const inputName = document.querySelector("#modal__input-name");
 const inputDescription = document.querySelector("#modal__input-description");
 const profileModal = document.querySelector("#modal__profile");
-const profileModalForm = profileModal.querySelector(".modal__form");
-const profileModalCloseButton = profileModal.querySelector(
-  "#modal__profile-close"
-);
+const profileForm = document.forms["profile-form"];
 // Card template variables
 const cardTemplate =
   document.querySelector("#card-template").content.firstElementChild;
 const cardContainer = document.querySelector(".card__container");
 // Add new card modal variables
 const openCardButton = document.querySelector(".profile__add-button");
-const closeCardButton = document.querySelector("#modal__add-close");
-const modalCardForm = document.querySelector("#modal__card-form");
+const cardForm = document.forms["card-form"];
 const cardPlaceName = document.querySelector("#modal__input-place");
 const cardPlaceURL = document.querySelector("#modal__input-url");
 const modalCard = document.querySelector("#modal__add-card");
 // Image preview variables
 const previewImageModal = document.querySelector("#modal__preview-wrapper");
 const previewImage = document.querySelector(".modal__preview-image");
-const previewImageClose = document.querySelector("#modal__preview-close");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
 // Modals Selector
 const modals = document.querySelectorAll(".modal");
 
+/**============================================
+ *               Card Creation Loop
+ *=============================================**/
 // Card creation loop for initial card array
 initialCards.forEach((item) => {
-  const createCard = createCardElement(item);
-  cardContainer.append(createCard);
+  renderCard(item, "append");
 });
 
+/**============================================
+ *               Functions
+ *=============================================**/
 // Card creation functions for user-added content
 function createCardElement(item) {
   const cardElement = cardTemplate.cloneNode(true);
@@ -90,10 +95,24 @@ function createCardElement(item) {
 function handleCardSubmit(evt) {
   evt.preventDefault();
   const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
-  const cardElement = createCardElement(cardPlace);
-  cardContainer.prepend(cardElement);
-  modalCardForm.reset();
+  renderCard(cardPlace, "prepend");
+  cardForm.reset();
+  handleSubmitInactive();
   closeModal(modalCard);
+}
+
+function handleSubmitInactive() {
+  const submitButtons = document.querySelectorAll(".modal__button");
+  submitButtons.forEach((submitButton) => {
+    submitButton.classList.add("modal__button_disabled");
+    submitButton.disabled = true;
+  });
+}
+
+function renderCard(item, method = "append") {
+  const cardElement = createCardElement(item);
+  cardContainer[method](cardElement);
+  return;
 }
 
 // Profile editing functions
@@ -107,10 +126,13 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
+  handleSubmitInactive();
   closeModal(profileModal);
 }
 
-// Universal popup open and close
+/**============================================
+ *        Popup Open and Close Functions
+ *=============================================**/
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
@@ -127,26 +149,22 @@ const handleEscape = (e) => {
   }
 };
 
-// Event Listeners
+/**============================================
+ *               Event Listeners
+ *=============================================**/
 openProfileButton.addEventListener("click", openProfileModal);
-profileModalCloseButton.addEventListener("click", function () {
-  closeModal(profileModal);
-});
-profileModalForm.addEventListener("submit", handleProfileFormSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 openCardButton.addEventListener("click", function () {
   openModal(modalCard);
 });
-closeCardButton.addEventListener("click", function () {
-  closeModal(modalCard);
-});
-modalCardForm.addEventListener("submit", handleCardSubmit);
-previewImageClose.addEventListener("click", function () {
-  closeModal(previewImageModal);
-});
+cardForm.addEventListener("submit", handleCardSubmit);
 
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (e) => {
-    if (e.target.classList.contains("modal_opened")) {
+    if (
+      e.target.classList.contains("modal_opened") ||
+      e.target.classList.contains("modal__close")
+    ) {
       closeModal(modal);
     }
   });

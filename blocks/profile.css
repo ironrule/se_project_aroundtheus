@@ -24,7 +24,7 @@
   grid-template-columns: minmax(auto, auto) auto;
 }
 
-.profile__title {
+.profile__name {
   font-family: "Inter", Arial, sans-serif;
   font-size: 42px;
   font-weight: 500;
@@ -90,7 +90,7 @@
 }
 
 @media screen and (min-width: 0px) and (max-width: 581px) {
-  .profile__title {
+  .profile__name {
     font-size: 22px;
     max-width: 250px;
   }
@@ -106,7 +106,7 @@
 }
 
 @media screen and (min-width: 581px) and (max-width: 880px) {
-  .profile__title {
+  .profile__name {
     font-size: 32px;
   }
   .profile__description {
