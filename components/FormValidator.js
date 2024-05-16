@@ -20,6 +20,8 @@ export default class FormValidator {
     submitButtons.forEach((submitButton) => {
       submitButton.classList.add("modal__button_disabled");
       submitButton.disabled = true;
+      const errorMessageEl = document.querySelector(".modal__card-error");
+      errorMessageEl.textContent = "";
     });
   }
 

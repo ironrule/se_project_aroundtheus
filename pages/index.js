@@ -125,6 +125,8 @@ function handleCardSubmit(evt) {
 
 // Profile editing functions
 function openProfileModal() {
+  const errorMessageEl = document.querySelector(".modal__profile-error");
+  errorMessageEl.textContent = "";
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(profileModal);
