@@ -19,6 +19,10 @@ The third phase of this project included adding functionality to allow the user 
 
 The fourth phase of this project included Javascript form validation for the edit profile modal. I also added new controls for closing the modals by using the mouse and clicking anywhere outside of the modal content, or by pressing the escape key.
 
+The next phase of this project included bringing my Javascript together in modules, so I created a FormValidator module and a Card module. I moved the appropriate code to the correct methods and removed all other code. I also took time during this refactoring to organize my code in a better way and include headings to improve the readability. Finally, I added some functionality to the form validation error messages to clean them up after they were no longer needed.
+
+**Hosted Site**
+
 The site is currently hosted on GitHub Pages at the following address:
 
 [Link to the project site on GitHub Pages](https://ironrule.github.io/se_project_aroundtheus/)
@@ -33,7 +37,7 @@ Below is a link to the video that I created for my site, to show the different f
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/N3zUeequnpvMX807FfYAZW/Sprint-6-Around-The-U.S.?node-id=0-1&t=88iVO80aevkZBggI-0)
+- [Link to the project on Figma](https://www.figma.com/file/05izwsCh3F3UsBmHfHhUFQ/Sprint-6%3A-Around-The-U.S.?node-id=0%3A1)
 
 After loading this design, I was able to export the necessary images for my project. This Figma design gave us a mockup of the site for small devices of 320 pixel width screens, and a regular desktop site of around 1280 pixels in width.
 
