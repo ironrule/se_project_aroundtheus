@@ -1,4 +1,9 @@
 /**============================================
+ *               Import Module Data
+ *=============================================**/
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js";
+/**============================================
  *               Initial Card Array
  *=============================================**/
 const initialCards = [
@@ -29,9 +34,8 @@ const initialCards = [
 ];
 
 /**============================================
- *               Variables
+ * Profile and profile modal selector variables
  *=============================================**/
-// Profile and profile modal selector variables
 const openProfileButton = document.querySelector(".profile__edit-button");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
@@ -39,57 +43,75 @@ const inputName = document.querySelector("#modal__input-name");
 const inputDescription = document.querySelector("#modal__input-description");
 const profileModal = document.querySelector("#modal__profile");
 const profileForm = document.forms["profile-form"];
-// Card template variables
-const cardTemplate =
-  document.querySelector("#card-template").content.firstElementChild;
+/**============================================
+ *           Card template variables
+ *=============================================**/
+const cardSelector = "#card-template";
 const cardContainer = document.querySelector(".card__container");
-// Add new card modal variables
 const openCardButton = document.querySelector(".profile__add-button");
 const cardForm = document.forms["card-form"];
 const cardPlaceName = document.querySelector("#modal__input-place");
 const cardPlaceURL = document.querySelector("#modal__input-url");
 const modalCard = document.querySelector("#modal__add-card");
-// Image preview variables
+/**============================================
+ *          Image preview variables
+ *=============================================**/
 const previewImageModal = document.querySelector("#modal__preview-wrapper");
 const previewImage = document.querySelector(".modal__preview-image");
 const previewImageCaption = document.querySelector(".modal__preview-caption");
-// Modals Selector
+/**============================================
+ *          Modals Selector for Loops
+ *=============================================**/
 const modals = document.querySelectorAll(".modal");
 
 /**============================================
- *               Card Creation Loop
+ *    FormValidator Config Object and Call
+ *=============================================**/
+const config = {
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__button",
+  inactiveButtonClass: "modal__button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
+function enableValidation(config, formEl) {
+  const validate = new FormValidator(config, formEl);
+  validate.enableValidation();
+}
+
+function resetFormValidation(config, formEl) {
+  const validate = new FormValidator(config, formEl);
+  validate.handleFormValidationReset();
+}
+
+/**============================================
+ *           Card Creation Functions
  *=============================================**/
 // Card creation loop for initial card array
 initialCards.forEach((item) => {
   renderCard(item, "append");
 });
+// Card creation loop for all cards
+function renderCard(item, method = "append") {
+  const card = new Card(item, cardSelector, handleImageClick);
+  const cardElement = card.renderCard();
+  cardContainer[method](cardElement);
+}
 
 /**============================================
  *               Functions
  *=============================================**/
-// Card creation functions for user-added content
-function createCardElement(item) {
-  const cardElement = cardTemplate.cloneNode(true);
-  const cardImage = cardElement.querySelector(".card__image");
-  const cardName = cardElement.querySelector(".card__title");
-  const likeButton = cardElement.querySelector(".card__like-button");
-  const deleteButton = cardElement.querySelector(".card__delete-button");
-  likeButton.addEventListener("click", () => {
-    likeButton.classList.toggle("card__like-button_active");
-  });
-  deleteButton.addEventListener("click", () => {
-    cardElement.remove();
-  });
-  cardName.textContent = item.name;
-  cardImage.src = item.link;
-  cardImage.alt = item.name;
-  cardImage.addEventListener("click", () => {
-    openModal(previewImageModal);
-    previewImage.src = cardImage.src;
-    previewImage.alt = cardImage.alt;
-    previewImageCaption.textContent = cardImage.alt;
-  });
-  return cardElement;
+function handleImageClick(e) {
+  openModal(previewImageModal);
+  previewImage.src = e.link;
+  previewImage.alt = e.name;
+  previewImageCaption.textContent = e.name;
+}
+
+function openCardModal() {
+  openModal(modalCard);
+  enableValidation(config, modalCard);
 }
 
 function handleCardSubmit(evt) {
@@ -97,22 +119,8 @@ function handleCardSubmit(evt) {
   const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
   renderCard(cardPlace, "prepend");
   cardForm.reset();
-  handleSubmitInactive();
+  resetFormValidation(config, modalCard);
   closeModal(modalCard);
-}
-
-function handleSubmitInactive() {
-  const submitButtons = document.querySelectorAll(".modal__button");
-  submitButtons.forEach((submitButton) => {
-    submitButton.classList.add("modal__button_disabled");
-    submitButton.disabled = true;
-  });
-}
-
-function renderCard(item, method = "append") {
-  const cardElement = createCardElement(item);
-  cardContainer[method](cardElement);
-  return;
 }
 
 // Profile editing functions
@@ -120,19 +128,21 @@ function openProfileModal() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(profileModal);
+  enableValidation(config, profileModal);
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  handleSubmitInactive();
+  resetFormValidation(config, profileModal);
   closeModal(profileModal);
 }
 
 /**============================================
- *        Popup Open and Close Functions
+ *  Popup Open and Close Universal Functions
  *=============================================**/
+
 function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("keydown", handleEscape);
@@ -154,11 +164,12 @@ const handleEscape = (e) => {
  *=============================================**/
 openProfileButton.addEventListener("click", openProfileModal);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
-openCardButton.addEventListener("click", function () {
-  openModal(modalCard);
-});
+openCardButton.addEventListener("click", openCardModal);
 cardForm.addEventListener("submit", handleCardSubmit);
 
+/**============================================
+ * Modals listeners for closing modals by Mouse
+ *=============================================**/
 modals.forEach((modal) => {
   modal.addEventListener("mousedown", (e) => {
     if (
