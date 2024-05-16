@@ -76,6 +76,8 @@ const config = {
 };
 const cardFormValidator = new FormValidator(config, cardForm);
 const profileFormValidator = new FormValidator(config, profileForm);
+cardFormValidator.enableValidation(config, modalCard);
+profileFormValidator.enableValidation(config, profileModal);
 
 /**============================================
  *           Card Creation Functions
@@ -103,7 +105,6 @@ function handleImageClick(e) {
 
 function openCardModal() {
   openModal(modalCard);
-  cardFormValidator.enableValidation(config, modalCard);
 }
 
 function handleCardSubmit(evt) {
@@ -124,7 +125,6 @@ function openProfileModal() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(profileModal);
-  profileFormValidator.enableValidation(config, profileModal);
 }
 
 function handleProfileFormSubmit(evt) {
