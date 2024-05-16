@@ -16,12 +16,10 @@ export default class FormValidator {
   }
 
   handleFormValidationReset() {
-    const submitButtons = document.querySelectorAll(".modal__button");
-    submitButtons.forEach((submitButton) => {
-      submitButton.classList.add("modal__button_disabled");
-      submitButton.disabled = true;
-      const errorMessageEl = document.querySelector(".modal__card-error");
-      errorMessageEl.textContent = "";
+    this._toggleButtonState();
+    const errorMessageInputEl = this._inputEls;
+    errorMessageInputEl.forEach((errorMessageInput) => {
+      this._hideInputError(errorMessageInput);
     });
   }
 
@@ -46,7 +44,7 @@ export default class FormValidator {
   _hideInputError(inputEl) {
     const errorMessageEl = this._formEl.querySelector(`#${inputEl.id}-error`);
     inputEl.classList.remove(this._inputErrorClass);
-    errorMessageEl.textContent = "";
+    errorMessageEl.textContent = null;
     errorMessageEl.classList.remove(this._errorClass);
   }
 

@@ -74,16 +74,8 @@ const config = {
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
-
-function enableValidation(config, formEl) {
-  const validate = new FormValidator(config, formEl);
-  validate.enableValidation();
-}
-
-function resetFormValidation(config, formEl) {
-  const validate = new FormValidator(config, formEl);
-  validate.handleFormValidationReset();
-}
+const cardFormValidator = new FormValidator(config, cardForm);
+const profileFormValidator = new FormValidator(config, profileForm);
 
 /**============================================
  *           Card Creation Functions
@@ -111,7 +103,7 @@ function handleImageClick(e) {
 
 function openCardModal() {
   openModal(modalCard);
-  enableValidation(config, modalCard);
+  cardFormValidator.enableValidation(config, modalCard);
 }
 
 function handleCardSubmit(evt) {
@@ -119,25 +111,27 @@ function handleCardSubmit(evt) {
   const cardPlace = { name: cardPlaceName.value, link: cardPlaceURL.value };
   renderCard(cardPlace, "prepend");
   cardForm.reset();
-  resetFormValidation(config, modalCard);
+  cardFormValidator.handleFormValidationReset();
   closeModal(modalCard);
 }
 
 // Profile editing functions
 function openProfileModal() {
-  const errorMessageEl = document.querySelector(".modal__profile-error");
-  errorMessageEl.textContent = "";
+  const errorMessageEl = document.querySelectorAll(".modal__profile-error");
+  errorMessageEl.forEach((errorMessage) => {
+    errorMessage.textContent = "";
+  });
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(profileModal);
-  enableValidation(config, profileModal);
+  profileFormValidator.enableValidation(config, profileModal);
 }
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  resetFormValidation(config, profileModal);
+  profileFormValidator.handleFormValidationReset(config, profileModal);
   closeModal(profileModal);
 }
 
