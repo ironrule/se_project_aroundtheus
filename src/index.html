@@ -3,7 +3,6 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <meta name="author" content="Brandon King" />
     <title>Around the U.S.</title>
@@ -12,7 +11,7 @@
     <header class="header">
       <img
         class="header__logo"
-        src="./images/logo.svg"
+        src="<%= require('./images/logo.svg')%>"
         alt="Around the U.S. logo"
       />
     </header>
@@ -21,7 +20,7 @@
       <section class="profile">
         <img
           class="profile__image"
-          src="./images/jacques-cousteau.jpg"
+          src="<%= require('./images/jacques-cousteau.jpg')%>"
           alt="Photo of Jacques Cousteau"
         />
         <div class="profile__info">
@@ -40,7 +39,7 @@
         >
           <img
             class="profile__add-image"
-            src="./images/plus.svg"
+            src="<%= require('./images/plus.svg')%>"
             alt="Add more to profile"
           />
         </button>
@@ -186,7 +185,5 @@
         <figcaption class="modal__preview-caption"></figcaption>
       </figure>
     </div>
-    <!-- Javascript files and modules to add functionality to site -->
-    <script type="module" src="./pages/index.js"></script>
   </body>
 </html>

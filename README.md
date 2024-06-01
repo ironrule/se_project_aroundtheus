@@ -21,6 +21,8 @@ The fourth phase of this project included Javascript form validation for the edi
 
 The next phase of this project included bringing my Javascript together in modules, so I created a FormValidator module and a Card module. I moved the appropriate code to the correct methods and removed all other code. I also took time during this refactoring to organize my code in a better way and include headings to improve the readability. Finally, I added some functionality to the form validation error messages to clean them up after they were no longer needed.
 
+The current phase of this project involved refactoring the site and creating new Javascript classes for each function. I completed this refactoring and moving my existing functions into classes, changing the code as needed so that it would work correctly under this new class format. I created classes for the popups, user info, section to add items to the DOM, and popup extensions for each popup type.
+
 **Hosted Site**
 
 The site is currently hosted on GitHub Pages at the following address:
@@ -69,4 +71,4 @@ I have added form validation and Javascript controls to limit what can be entere
 
 **Future Plans**
 
-Future plans for this site include coding the back-end to allow saving changes permanently. This will be accomplished with additional Javascript, CSS and HTML.
+Future plans for this site include coding the back-end to allow saving changes permanently. This will be accomplished with additional Javascript, CSS and HTML, and using React.
