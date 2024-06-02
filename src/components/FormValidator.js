@@ -15,7 +15,7 @@ export default class FormValidator {
     this._setEventListeners();
   }
 
-  handleFormValidationReset() {
+  resetValidation() {
     this._toggleButtonState();
     const errorMessageInputEl = this._inputEls;
     errorMessageInputEl.forEach((errorMessageInput) => {

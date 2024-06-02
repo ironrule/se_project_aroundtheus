@@ -16,18 +16,12 @@ import UserInfo from "../components/UserInfo.js";
  * Profile and profile modal selector variables
  *=============================================**/
 const openProfileButton = document.querySelector(".profile__edit-button");
-const profileName = document.querySelector("#modal__input-name");
-const profileDescription = document.querySelector("#modal__input-description");
-const profilePopup = document.querySelector("#modal__profile");
-const profileForm = document.forms["profile-form"];
 /**============================================
  *       Card template selector variables
  *=============================================**/
 const cardSelector = "#card-template";
 const cardContainer = document.querySelector(".card__container");
 const openCardButton = document.querySelector(".profile__add-button");
-const cardForm = document.forms["card-form"];
-const cardPopup = document.querySelector("#modal__add-card");
 /**============================================
  *            Class Instantiations
  *=============================================**/
@@ -46,14 +40,23 @@ const cardSection = new Section(
 );
 const cardPopupForm = new PopupWithForm("#modal__add-card", handleCardSubmit);
 const popupWithImage = new PopupWithImage("#modal__preview-wrapper");
-const cardFormValidator = new FormValidator(config, cardForm);
-const profileFormValidator = new FormValidator(config, profileForm);
 /**============================================
  *      Validation and Card Class Calls
  *=============================================**/
-cardFormValidator.enableValidation(config, cardPopup);
-profileFormValidator.enableValidation(config, profilePopup);
 cardSection.renderItems();
+
+const formValidators = {};
+const enableValidation = (config) => {
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
+  formList.forEach((formElement) => {
+    const validator = new FormValidator(config, formElement);
+    const formName = formElement.getAttribute("name");
+    formValidators[formName] = validator;
+    validator.enableValidation();
+  });
+};
+enableValidation(config);
+
 /**============================================
  *               Functions
  *=============================================**/
@@ -81,13 +84,12 @@ function handleCardSubmit(data) {
  *=============================================**/
 openProfileButton.addEventListener("click", function () {
   const userData = userInfo.getUserInfo();
-  profileName.value = userData.name;
-  profileDescription.value = userData.description;
-  profileFormValidator.handleFormValidationReset();
+  profilePopupForm.setInputValues(userData);
+  formValidators["profile-form"].resetValidation();
   profilePopupForm.open();
 });
 openCardButton.addEventListener("click", () => {
-  cardFormValidator.handleFormValidationReset();
+  formValidators["card-form"].resetValidation();
   cardPopupForm.open();
 });
 popupWithImage.setEventListeners();
