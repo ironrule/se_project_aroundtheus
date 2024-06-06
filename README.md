@@ -39,7 +39,7 @@ Below is a link to the video that I created for my site, to show the different f
 
 **Figma**
 
-- [Link to the project on Figma](https://www.figma.com/file/05izwsCh3F3UsBmHfHhUFQ/Sprint-6%3A-Around-The-U.S.?node-id=0%3A1)
+- [Link to the project on Figma](https://www.figma.com/design/E5x6ib3osaUUNwLRRAsTDX/Sprint-9-%E2%80%94-Applied-JavaScript?node-id=1530-2)
 
 After loading this design, I was able to export the necessary images for my project. This Figma design gave us a mockup of the site for small devices of 320 pixel width screens, and a regular desktop site of around 1280 pixels in width.
 
