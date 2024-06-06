@@ -12,6 +12,7 @@ import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
 /**============================================
  * Profile and profile modal selector variables
  *=============================================**/
@@ -29,7 +30,12 @@ const userInfo = new UserInfo({
   name: ".profile__name",
   description: ".profile__description",
 });
-
+const getApiUserInfo = new Api({
+  name: ".profile__name",
+  about: ".profile__description",
+  avatar: ".profile__image",
+});
+getApiUserInfo.getUserInfo();
 const profilePopupForm = new PopupWithForm(
   "#modal__profile",
   handleProfileSubmit
