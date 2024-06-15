@@ -16,21 +16,20 @@
       />
     </header>
     <main>
-      <!-- Profile Section with user image, name, and title -->
+      <!-- Profile Section with user image, name, and title retrieved from API -->
       <section class="profile">
-        <img
-          class="profile__image"
-          src="<%= require('./images/jacques-cousteau.jpg')%>"
-          alt="Photo of Jacques Cousteau"
-        />
+        <div class="profile__overlay">
+          <img class="profile__image" alt="Profile Photo" />
+          <button class="profile__overlay-button"></button>
+        </div>
         <div class="profile__info">
-          <h1 class="profile__name">Jacques Cousteau</h1>
+          <h1 class="profile__name"></h1>
           <button
             class="profile__edit-button"
             aria-label="Profile Edit Button"
             type="button"
           ></button>
-          <p class="profile__description">Explorer</p>
+          <p class="profile__description"></p>
         </div>
         <button
           class="profile__add-button"
@@ -123,6 +122,39 @@
         </form>
       </div>
     </div>
+    <!-- Popup Modal to change user avatar picture -->
+    <div class="modal" id="modal__avatar">
+      <div class="modal__container">
+        <button
+          class="modal__close"
+          id="modal__avatar-close"
+          type="button"
+        ></button>
+        <h2 class="modal__heading">Change profile picture</h2>
+        <form class="modal__form" id="avatar-form" name="avatar-form">
+          <input
+            class="modal__input"
+            id="modal__input-url"
+            type="url"
+            name="url"
+            placeholder="Avatar Image Link"
+            value=""
+            required
+          />
+          <span
+            class="modal__input-error modal__avatar-error"
+            id="modal__input-url-error"
+          ></span>
+          <button
+            class="modal__button modal__button_disabled"
+            type="submit"
+            disabled
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
     <!-- Popup Modal with ability to add new cards -->
     <div class="modal" id="modal__add-card">
       <div class="modal__container">
@@ -168,6 +200,22 @@
           >
             Create
           </button>
+        </form>
+      </div>
+    </div>
+    <!-- Popup Modal for delete confirmation -->
+    <div class="modal" id="modal__delete-card">
+      <div class="modal__container modal__confirmation">
+        <button
+          class="modal__close"
+          id="modal__confirmation-close"
+          type="button"
+        ></button>
+        <h2 class="modal__heading modal__confirmation_heading">
+          Are you sure?
+        </h2>
+        <form class="modal__form" id="delete-form" name="delete-form">
+          <button class="modal__button" type="submit">Yes</button>
         </form>
       </div>
     </div>

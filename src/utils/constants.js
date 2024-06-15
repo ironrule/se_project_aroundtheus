@@ -1,33 +1,4 @@
 /**============================================
- *               Initial Card Array
- *=============================================**/
-export const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
-/**============================================
  *       FormValidator Config Object
  *=============================================**/
 export const config = {
@@ -38,3 +9,26 @@ export const config = {
   errorClass: "modal__error_visible",
   formSelector: ".modal__form",
 };
+
+export const apiConfig = {
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "7d61f2da-4ddf-40b8-adec-eade6c2db478",
+    "Content-Type": "application/json",
+  },
+};
+/**============================================
+ * Profile and profile modal selector variables
+ *=============================================**/
+export const openProfileButton = document.querySelector(
+  ".profile__edit-button"
+);
+export const openAvatarButton = document.querySelector(
+  ".profile__overlay-button"
+);
+/**============================================
+ *       Card template selector variables
+ *=============================================**/
+export const cardSelector = "#card-template";
+export const cardContainer = document.querySelector(".card__container");
+export const openCardButton = document.querySelector(".profile__add-button");

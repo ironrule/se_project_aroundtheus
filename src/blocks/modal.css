@@ -44,6 +44,11 @@
   border-radius: 10px;
 }
 
+.modal__confirmation {
+  max-height: 181px;
+  padding-top: 34px;
+}
+
 .modal__close {
   border: none;
   background-color: transparent;
@@ -72,6 +77,10 @@
   font-size: 24px;
   font-weight: 900;
   margin: 0 0 54px 0;
+}
+
+.modal__confirmation_heading {
+  margin: 0 0 38px 0;
 }
 
 .modal__form {
@@ -160,7 +169,8 @@
     font-size: 14px;
   }
   .modal__preview-close {
-    bottom: calc(100% + 32px);
-    left: calc(100% - 32px);
+    bottom: calc(100% + 42px);
+    left: calc(100% - 28px);
+    padding-bottom: 40px;
   }
 }

@@ -1,9 +1,20 @@
 export default class Card {
-  constructor(data, cardSelector, handleImageClick) {
+  constructor(
+    data,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  ) {
+    this.card = data;
     this.name = data.name;
     this.link = data.link;
+    this.cardID = data._id;
+    this.isLiked = data.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteClick = handleDeleteClick;
+    this.handleLikeClick = handleLikeClick;
   }
 
   renderCard() {
@@ -11,6 +22,9 @@ export default class Card {
     this.cardElement.querySelector(".card__title").textContent = this.name;
     this.cardImageElement = this.cardElement.querySelector(".card__image");
     this.likeButton = this.cardElement.querySelector(".card__like-button");
+    if (this.isLiked) {
+      this.likeButton.classList.add("card__like-button_active");
+    }
     this.deleteButton = this.cardElement.querySelector(".card__delete-button");
     this.cardImageElement.src = this.link;
     this.cardImageElement.alt = this.name;
@@ -29,15 +43,20 @@ export default class Card {
       this._handleImageClick(this);
     });
     this.likeButton.addEventListener("click", this._handleLikeButton);
-    this.deleteButton.addEventListener("click", this._handleDeleteButton);
+    this.deleteButton.addEventListener("click", () => {
+      this._handleDeleteClick(this);
+    });
   }
 
-  _handleDeleteButton = () => {
-    this.cardElement.remove();
-    this.cardElement = null;
-  };
-
   _handleLikeButton = () => {
-    this.likeButton.classList.toggle("card__like-button_active");
+    if (!this.likeButton.classList.contains("card__like-button_active")) {
+      this.likeButton.classList.add("card__like-button_active");
+      this.handleLikeClick(this.card, "addLike");
+    } else {
+      if (this.likeButton.classList.contains("card__like-button_active")) {
+        this.likeButton.classList.remove("card__like-button_active");
+        this.handleLikeClick(this.card, "removeLike");
+      }
+    }
   };
 }

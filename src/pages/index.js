@@ -7,49 +7,62 @@ import "./index.css";
  *=============================================**/
 import Card from "../components/Card.js";
 import FormValidator from "../components/FormValidator.js";
-import { initialCards, config } from "../utils/constants.js";
+import {
+  config,
+  apiConfig,
+  openProfileButton,
+  openAvatarButton,
+  cardSelector,
+  cardContainer,
+  openCardButton,
+} from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
+import PopupDeleteConfirmation from "../components/PopupDeleteConfirmation.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import Api from "../components/Api.js";
-/**============================================
- * Profile and profile modal selector variables
- *=============================================**/
-const openProfileButton = document.querySelector(".profile__edit-button");
-/**============================================
- *       Card template selector variables
- *=============================================**/
-const cardSelector = "#card-template";
-const cardContainer = document.querySelector(".card__container");
-const openCardButton = document.querySelector(".profile__add-button");
 /**============================================
  *            Class Instantiations
  *=============================================**/
 const userInfo = new UserInfo({
   name: ".profile__name",
   description: ".profile__description",
-});
-const getApiUserInfo = new Api({
-  name: ".profile__name",
-  about: ".profile__description",
   avatar: ".profile__image",
 });
-getApiUserInfo.getUserInfo();
+const api = new Api(apiConfig);
 const profilePopupForm = new PopupWithForm(
   "#modal__profile",
   handleProfileSubmit
 );
-const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
-  cardContainer
-);
+const avatarPopupForm = new PopupWithForm("#modal__avatar", handleAvatarSubmit);
+const cardSection = new Section({}, cardContainer);
 const cardPopupForm = new PopupWithForm("#modal__add-card", handleCardSubmit);
 const popupWithImage = new PopupWithImage("#modal__preview-wrapper");
+const openConfirmation = new PopupDeleteConfirmation(
+  "#modal__delete-card",
+  deleteConfirmed
+);
 /**============================================
  *      Validation and Card Class Calls
  *=============================================**/
-cardSection.renderItems();
+const getUserInfo = api
+  .getUserInfo()
+  .then((res) => {
+    getInitialApiUserInfo(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+const getCardInfo = api
+  .getInitialCards()
+  .then((res) => {
+    handleApiCardInfo(res);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+api.initialSite([getUserInfo, getCardInfo]);
 
 const formValidators = {};
 const enableValidation = (config) => {
@@ -62,28 +75,103 @@ const enableValidation = (config) => {
   });
 };
 enableValidation(config);
-
 /**============================================
  *               Functions
  *=============================================**/
+function handleApiCardInfo(cardData) {
+  const cardApiSection = new Section(
+    { items: cardData, renderer: renderCard },
+    cardContainer
+  );
+  cardApiSection.renderItems();
+}
 function renderCard(item, method = "append") {
-  const card = new Card(item, cardSelector, handleImageClick);
+  const card = new Card(
+    item,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  );
   const cardElement = card.renderCard();
   cardSection.addItem(cardElement, method);
 }
 function handleImageClick(data) {
   popupWithImage.open(data);
 }
-function handleProfileSubmit(userData) {
+function handleDeleteClick(card) {
+  openConfirmation.open(card);
+}
+function deleteConfirmed(card) {
+  api
+    .deleteCard(card.cardID)
+    .then(() => {
+      card.cardElement.remove();
+      card.cardElement = null;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+function handleLikeClick(card, likeAction) {
+  if (likeAction === "addLike") {
+    api.addLike(card._id).catch((err) => {
+      console.error(err);
+    });
+  }
+  if (likeAction === "removeLike") {
+    api.deleteLike(card._id).catch((err) => {
+      console.error(err);
+    });
+  }
+}
+function getInitialApiUserInfo(userData) {
   userInfo.setUserInfo({
-    name: userData.title,
-    description: userData.description,
+    name: userData.name,
+    description: userData.about,
   });
+  userInfo.setUserAvatar(userData.avatar);
+}
+function handleProfileSubmit(userData) {
+  api
+    .setUserInfo(userData.title, userData.description)
+    .then(() => {
+      userInfo.setUserInfo({
+        name: userData.title,
+        description: userData.description,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
+function handleAvatarSubmit(data) {
+  api
+    .setAvatar(data.url)
+    .then((res) => {
+      userInfo.setUserAvatar(res.avatar);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 function handleCardSubmit(data) {
   const cardElement = { name: data.title, link: data.url };
-  const card = new Card(cardElement, cardSelector, handleImageClick);
-  cardSection.addItem(card.renderCard(), "prepend");
+  const card = new Card(
+    cardElement,
+    cardSelector,
+    handleImageClick,
+    handleDeleteClick,
+    handleLikeClick
+  );
+  api
+    .addCard(cardElement)
+    .then(() => {
+      cardSection.addItem(card.renderCard(), "prepend");
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 }
 /**============================================
  *               Event Listeners
@@ -98,6 +186,12 @@ openCardButton.addEventListener("click", () => {
   formValidators["card-form"].resetValidation();
   cardPopupForm.open();
 });
+openAvatarButton.addEventListener("click", () => {
+  formValidators["avatar-form"].resetValidation();
+  avatarPopupForm.open();
+});
 popupWithImage.setEventListeners();
 profilePopupForm.setEventListeners();
+avatarPopupForm.setEventListeners();
 cardPopupForm.setEventListeners();
+openConfirmation.setEventListeners();

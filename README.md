@@ -23,11 +23,13 @@ The next phase of this project included bringing my Javascript together in modul
 
 The current phase of this project involved refactoring the site and creating new Javascript classes for each function. I completed this refactoring and moving my existing functions into classes, changing the code as needed so that it would work correctly under this new class format. I created classes for the popups, user info, section to add items to the DOM, and popup extensions for each popup type.
 
+I also added functionality through the provided API to allow changes to persist through page refresh.
+
 **Hosted Site**
 
-The site is currently hosted on GitHub Pages at the following address:
+The site is currently self-hosted on my server at the following address:
 
-[Link to the project site on GitHub Pages](https://ironrule.github.io/se_project_aroundtheus/)
+[Link to the self-hosted project site](http://onelastcup.com/Projects/AroundTheUS/)
 
 You can review the site in DevTools and inspect each element, as well as change page sizes to see how it will look on different devices. As we were given 2 designs in Figma, some of the different sizes had to be styled based on what looked or worked best.
 
@@ -71,4 +73,4 @@ I have added form validation and Javascript controls to limit what can be entere
 
 **Future Plans**
 
-Future plans for this site include coding the back-end to allow saving changes permanently. This will be accomplished with additional Javascript, CSS and HTML, and using React.
+Future plans for this site include making modifications to the site based on purpose and intended use. This site can be deployed in a variety of settings and for purposes like a travel site, author site, or other types where works can be displayed.
