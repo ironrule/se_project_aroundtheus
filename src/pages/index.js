@@ -15,6 +15,7 @@ import {
   cardSelector,
   cardContainer,
   openCardButton,
+  cardElement,
 } from "../utils/constants.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
@@ -42,6 +43,13 @@ const popupWithImage = new PopupWithImage("#modal__preview-wrapper");
 const openConfirmation = new PopupDeleteConfirmation(
   "#modal__delete-card",
   deleteConfirmed
+);
+const card = new Card(
+  cardElement,
+  cardSelector,
+  handleImageClick,
+  handleDeleteClick,
+  handleLikeClick
 );
 /**============================================
  *      Validation and Card Class Calls
@@ -157,17 +165,10 @@ function handleAvatarSubmit(data) {
 }
 function handleCardSubmit(data) {
   const cardElement = { name: data.title, link: data.url };
-  const card = new Card(
-    cardElement,
-    cardSelector,
-    handleImageClick,
-    handleDeleteClick,
-    handleLikeClick
-  );
   api
     .addCard(cardElement)
-    .then(() => {
-      cardSection.addItem(card.renderCard(), "prepend");
+    .then((res) => {
+      renderCard(res, "prepend");
     })
     .catch((err) => {
       console.error(err);

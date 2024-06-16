@@ -32,3 +32,4 @@ export const openAvatarButton = document.querySelector(
 export const cardSelector = "#card-template";
 export const cardContainer = document.querySelector(".card__container");
 export const openCardButton = document.querySelector(".profile__add-button");
+export const cardElement = {};
