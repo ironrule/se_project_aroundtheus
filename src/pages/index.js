@@ -40,7 +40,7 @@ const avatarPopupForm = new PopupWithForm("#modal__avatar", handleAvatarSubmit);
 const cardSection = new Section({}, cardContainer);
 const cardPopupForm = new PopupWithForm("#modal__add-card", handleCardSubmit);
 const popupWithImage = new PopupWithImage("#modal__preview-wrapper");
-const openConfirmation = new PopupDeleteConfirmation(
+const deleteConfirmation = new PopupDeleteConfirmation(
   "#modal__delete-card",
   deleteConfirmed
 );
@@ -54,23 +54,14 @@ const card = new Card(
 /**============================================
  *      Validation and Card Class Calls
  *=============================================**/
-const getUserInfo = api
-  .getUserInfo()
+Promise.all([api.getUserInfo(), api.getInitialCards()])
   .then((res) => {
-    getInitialApiUserInfo(res);
+    const userData = res[0];
+    const cards = Array.from(res[1]);
+    getInitialApiUserInfo(userData);
+    handleApiCardInfo(cards);
   })
-  .catch((err) => {
-    console.error(err);
-  });
-const getCardInfo = api
-  .getInitialCards()
-  .then((res) => {
-    handleApiCardInfo(res);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-api.initialSite([getUserInfo, getCardInfo]);
+  .catch(console.error);
 
 const formValidators = {};
 const enableValidation = (config) => {
@@ -107,8 +98,8 @@ function renderCard(item, method = "append") {
 function handleImageClick(data) {
   popupWithImage.open(data);
 }
-function handleDeleteClick(card) {
-  openConfirmation.open(card);
+function handleDeleteClick(cardData) {
+  deleteConfirmation.open(cardData);
 }
 function deleteConfirmed(card) {
   api
@@ -117,22 +108,28 @@ function deleteConfirmed(card) {
       card.cardElement.remove();
       card.cardElement = null;
     })
-    .catch((err) => {
-      console.error(err);
-    });
+    .then(deleteConfirmation.close())
+    .catch(console.error);
 }
-function handleLikeClick(card, likeAction) {
+function handleLikeClick(cardData, card, likeAction) {
   if (likeAction === "addLike") {
-    api.addLike(card._id).catch((err) => {
-      console.error(err);
-    });
+    api
+      .addLike(card._id)
+      .then(cardData.likeButton.classList.add("card__like-button_active"))
+      .catch((err) => {
+        console.error(err);
+      });
   }
   if (likeAction === "removeLike") {
-    api.deleteLike(card._id).catch((err) => {
-      console.error(err);
-    });
+    api
+      .deleteLike(card._id)
+      .then(cardData.likeButton.classList.remove("card__like-button_active"))
+      .catch((err) => {
+        console.error(err);
+      });
   }
 }
+
 function getInitialApiUserInfo(userData) {
   userInfo.setUserInfo({
     name: userData.name,
@@ -140,7 +137,9 @@ function getInitialApiUserInfo(userData) {
   });
   userInfo.setUserAvatar(userData.avatar);
 }
+
 function handleProfileSubmit(userData) {
+  profilePopupForm.renderLoading(true, "Saving...");
   api
     .setUserInfo(userData.title, userData.description)
     .then(() => {
@@ -149,29 +148,46 @@ function handleProfileSubmit(userData) {
         description: userData.description,
       });
     })
-    .catch((err) => {
-      console.error(err);
+    .then(() => {
+      profilePopupForm.close();
+      profilePopupForm.popupFormReset();
+    })
+    .catch(console.error)
+    .finally(() => {
+      profilePopupForm.renderLoading(false);
     });
 }
 function handleAvatarSubmit(data) {
+  avatarPopupForm.renderLoading(true, "Saving...");
   api
     .setAvatar(data.url)
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
     })
-    .catch((err) => {
-      console.error(err);
+    .then(() => {
+      avatarPopupForm.close();
+      avatarPopupForm.popupFormReset();
+    })
+    .catch(console.error)
+    .finally(() => {
+      avatarPopupForm.renderLoading(false);
     });
 }
 function handleCardSubmit(data) {
+  cardPopupForm.renderLoading(true, "Saving...");
   const cardElement = { name: data.title, link: data.url };
   api
     .addCard(cardElement)
     .then((res) => {
       renderCard(res, "prepend");
     })
-    .catch((err) => {
-      console.error(err);
+    .then(() => {
+      cardPopupForm.close();
+      cardPopupForm.popupFormReset();
+    })
+    .catch(console.error)
+    .finally(() => {
+      cardPopupForm.renderLoading(false);
     });
 }
 /**============================================
@@ -195,4 +211,4 @@ popupWithImage.setEventListeners();
 profilePopupForm.setEventListeners();
 avatarPopupForm.setEventListeners();
 cardPopupForm.setEventListeners();
-openConfirmation.setEventListeners();
+deleteConfirmation.setEventListeners();

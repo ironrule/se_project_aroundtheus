@@ -50,12 +50,10 @@ export default class Card {
 
   _handleLikeButton = () => {
     if (!this.likeButton.classList.contains("card__like-button_active")) {
-      this.likeButton.classList.add("card__like-button_active");
-      this.handleLikeClick(this.card, "addLike");
+      this.handleLikeClick(this, this.card, "addLike");
     } else {
       if (this.likeButton.classList.contains("card__like-button_active")) {
-        this.likeButton.classList.remove("card__like-button_active");
-        this.handleLikeClick(this.card, "removeLike");
+        this.handleLikeClick(this, this.card, "removeLike");
       }
     }
   };
