@@ -108,25 +108,27 @@ function deleteConfirmed(card) {
       card.cardElement.remove();
       card.cardElement = null;
     })
-    .then(deleteConfirmation.close())
+    .then(() => {
+      deleteConfirmation.close();
+    })
     .catch(console.error);
 }
-function handleLikeClick(cardData, card, likeAction) {
+function handleLikeClick(cardObj, cardData, likeAction) {
   if (likeAction === "addLike") {
     api
-      .addLike(card._id)
-      .then(cardData.likeButton.classList.add("card__like-button_active"))
-      .catch((err) => {
-        console.error(err);
-      });
+      .addLike(cardData._id)
+      .then(() => {
+        card.addLike(cardObj);
+      })
+      .catch(console.error);
   }
   if (likeAction === "removeLike") {
     api
-      .deleteLike(card._id)
-      .then(cardData.likeButton.classList.remove("card__like-button_active"))
-      .catch((err) => {
-        console.error(err);
-      });
+      .deleteLike(cardData._id)
+      .then((res) => {
+        card.removeLike(cardObj);
+      })
+      .catch(console.error);
   }
 }
 

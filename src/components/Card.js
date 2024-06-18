@@ -57,4 +57,14 @@ export default class Card {
       }
     }
   };
+
+  addLike(cardData) {
+    cardData.likeButton.classList.add("card__like-button_active");
+    // console.log(cardData);
+  }
+
+  removeLike(cardData) {
+    // console.log(cardData);
+    cardData.likeButton.classList.remove("card__like-button_active");
+  }
 }
