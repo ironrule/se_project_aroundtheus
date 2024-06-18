@@ -55,9 +55,7 @@ const card = new Card(
  *      Validation and Card Class Calls
  *=============================================**/
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-  .then((res) => {
-    const userData = res[0];
-    const cards = Array.from(res[1]);
+  .then(([userData, cards]) => {
     getInitialApiUserInfo(userData);
     handleApiCardInfo(cards);
   })
@@ -152,7 +150,7 @@ function handleProfileSubmit(userData) {
     })
     .then(() => {
       profilePopupForm.close();
-      profilePopupForm.popupFormReset();
+      profilePopupForm.resetPopupForm();
     })
     .catch(console.error)
     .finally(() => {
@@ -160,15 +158,13 @@ function handleProfileSubmit(userData) {
     });
 }
 function handleAvatarSubmit(data) {
-  avatarPopupForm.renderLoading(true, "Saving...");
+  avatarPopupForm.renderLoading(true);
   api
     .setAvatar(data.url)
     .then((res) => {
       userInfo.setUserAvatar(res.avatar);
-    })
-    .then(() => {
       avatarPopupForm.close();
-      avatarPopupForm.popupFormReset();
+      avatarPopupForm.resetPopupForm();
     })
     .catch(console.error)
     .finally(() => {
@@ -185,7 +181,7 @@ function handleCardSubmit(data) {
     })
     .then(() => {
       cardPopupForm.close();
-      cardPopupForm.popupFormReset();
+      cardPopupForm.resetPopupForm();
     })
     .catch(console.error)
     .finally(() => {
