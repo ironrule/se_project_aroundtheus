@@ -125,7 +125,7 @@ function handleLikeClick(cardObj, cardData, likeAction) {
   if (likeAction === "removeLike") {
     api
       .deleteLike(cardData._id)
-      .then((res) => {
+      .then(() => {
         card.removeLike(cardObj);
       })
       .catch(console.error);
